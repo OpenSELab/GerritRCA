@@ -1,0 +1,52 @@
+id,job,workchain,prompt_message,calling_seq,,,,,,,,,
+1,gerrit代码问题,"gerrit代码相关任务的一般处理流程为(分为ssh方式和http方式) :
+一、发送ssh请求：用户使用git发送请求，请求先被用户所在区域的nginx服务器捕获，请求被转发至ssh-proxy代理服务器，然后由代理服务器将请求发送至gerrit ssh节点。发送至对应节点后，，进行代码下载、流水线触发等任务。注意：代码上传任务只会上传到主库的gerrit节点。
+ssh方式请求代码的路径为：nginx -> ssh-proxy -> gerrit的ssh节点，解释如下
+①nginx进行反向代理，请求信息记录到'nginx#ssh_access.log'中  -->
+②ssh-proxy进行链路转发，将请求转发的gerrit节点，转发信息存放在'ssh-proxy#gerrit#gerrit-ssh-proxy.log'日志文件中;  -->
+③请求转发至gerrit节点后，由gerrit节点'gerrit#sshd_log'日志记录被接受请求；请求成功接受后，gerrit会根据请求触发一些事件，触发的具体事件信息存放在'gerrit#highAvailability_log'日志文件中;Gerrit 进程的标准错误（stderr）输出日志会被存放至gerrit#gerrit-stderr---supervisor.log中。
+
+
+二、用户使用http方式发送请求，请求被所在区域的nginx转发到gerrit的http节点。发送到对应节点被捕获并进行触发相应事件。
+http方式请求代码的默认路径为：nginx -> ssh-proxy -> gerrit的http节点，解释如下：
+①nginx进行反向代理，请求信息记录到'nginx#https_access.log'中  -->
+②请求直接转发至gerrit的http节点，请求记录在gerrit节点的'gerrit#httpd_log'日志中；请求成功接受后，gerrit会根据请求触发一些事件，触发的具体事件信息存放在'gerrit#highAvailability_log'日志文件中;Gerrit 进程的标准错误（stderr）输出日志会被存放至gerrit#gerrit-stderr---supervisor.log中。
+代码下载或触发gerrit事件流、连接gerrit服务器等一般使用ssh方式，浏览器操作触发或故障中显示使用http操作则代表使用http方式发送请求
+
+代码同步问题通常只要检查gerrit的highAvailability_log日志，检查代码提交（patchset-create）开始和同步完成时间，同一代码的不同信息使用同一commitid，可以根据该内容进行日志匹配和分析，重点关注同步完成的间隔时间
+
+","gerrit的架构信息如下：
+gerrit节点分为ssh节点（用户使用ssh请求访问gerrit时请求的节点）、http节点（用户使用ssh请求访问gerrit时请求的节点）、事件节点（固定只有一个）
+gerrit节点在地域上分为主库与镜像库，主库有自己的ssh节点和http节点，镜像节点有多个都有自己的ssh节点和http节点。
+主库在南京，主库与其他低于的代码上传都是上传到主库的ssh节点或者http节点，代码下载则是请求当前区域的gerrit节点。例如南京用户下载代码直接下载南京主库的gerrit节点，而西安用户则请求部署在西安的镜像gerrit节点进行代码下载
+当代码上传至主库之后，会定期同步到镜像节点
+
+","排查顺序的方向与任务执行顺序的方向相同
+ssh方式请求的默认路径默认排查顺序为：nginx#ssh_access.log;ssh-proxy#gerrit#gerrit-ssh-proxy.log;gerrit#sshd_log;gerrit#highAvailability_log;gerrit#gerrit-stderr---supervisor.log
+
+http方式请求的默认路径为：
+nginx#https_access.log;gerrit#httpd_log;gerrit#highAvailability_log;gerrit#gerrit-stderr---supervisor.log
+
+
+",,,,"gerrit代码相关任务的一般处理流程为：
+一、用户使用git发送请求，请求先被用户区域的nginx服务器捕获，发出ssh请求方式，将请求发送至ssh-proxy代理服务器，然后由代理服务器将请求发送至gerrit ssh节点。发送到对应节点后，进行代码下载、流水线触发等任务。注意：代码上传任务只会上传到主库的gerrit节点。
+ssh方式请求代码的路径为：nginx -> ssh-proxy -> gerrit的ssh节点，解释如下
+①nginx进行反向代理，请求信息记录到'nginx#ssh_access.log'中  -->
+②ssh-proxy进行链路转发，将请求转发的gerrit节点，转发信息存放在'ssh-proxy#gerrit#gerrit-ssh-proxy.log'日志文件中;  -->
+③请求转发至gerrit节点后，由gerrit节点'gerrit#sshd_log'日志记录被接受请求；请求成功接受后，gerrit会根据请求触发一些事件，触发的具体事件信息存放在'gerrit#highAvailability_log'日志文件中;事件发生前的日志和发生后的日志会被记录到gerrit#before_rep_log和gerrit#after_rep_log中；Gerrit 进程的标准错误（stderr）输出日志会被存放至gerrit#gerrit-stderr---supervisor.log中。
+
+
+二、用户使用http方式发送请求，请求被所在区域的nginx转发到gerrit的http节点。发送到对应节点被捕获并进行触发相应事件。
+http方式请求代码的默认路径为：nginx -> ssh-proxy -> gerrit的http节点，解释如下：
+①nginx进行反向代理，请求信息记录到'nginx#https_access.log'中  -->
+②请求直接转发至gerrit的http节点，请求记录在gerrit节点的'gerrit#httpd_log'日志中；请求成功接受后，gerrit会根据请求触发一些事件，触发的具体事件信息存放在'gerrit#highAvailability_log'日志文件中;事件发生前的日志和发生后的日志会被记录到gerrit#before_rep_log和gerrit#after_rep_log中；Gerrit 进程的标准错误（stderr）输出日志会被存放至gerrit#gerrit-stderr---supervisor.log中。
+
+代码下载触发gerrit事件流一般使用ssh方式，浏览器操作触发或故障中显示使用http操作则代表使用http方式发送请求
+","排查顺序的方向与任务执行顺序的方向相同
+ssh方式请求的默认路径默认排查顺序为：nginx#ssh_access.log;ssh-proxy#gerrit#gerrit-ssh-proxy.log;gerrit#sshd_log;gerrit#highAvailability_log;gerrit#before_rep_log;gerrit#after_rep_log;gerrit#gerrit-stderr---supervisor.log
+
+http方式请求的默认路径为：
+nginx#https_access.log;gerrit#httpd_log;gerrit#highAvailability_log;gerrit#before_rep_log;gerrit#after_rep_log;gerrit#gerrit-stderr---supervisor.log
+
+
+"

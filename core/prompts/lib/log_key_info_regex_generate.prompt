@@ -1,0 +1,26 @@
+### 示例
+
+假设输入为：
+
+[29/Jul/2025:09:56:00 +0800][304][10.56.80.212][10.56.80.212][0.158][10068463][-][-][GET /changes/23067305/revisions/6d66f6ff8af3eed3b1a86404a5be97dea9783c2/actions HTTP/1.1][Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36][https://gerrit.ze.com.cn/][RedirectedToNewiCenter=1; time=48; ZTEDPGSSOUser=10068463; ZTEDPGSSOCookie=5033918cdf45e86e6cc5c9a86a0c6eea; ZTEDPGSSOLanguage=zh_CN; ZTEDPGSSOVersionType=1; udsVersion=V3.6.3build17; udsClientIp=10.56.80.212; clientSerialNo=00-16-3E-00-01-79; itsUserZte=10068463; itsTokenZte=5033918cdf45e86e6cc5c9a86a0c6eea; PORTALSOLanguage=zh_CN; UCSSSOLanguage=zh_CN; iAuthLanguage_prod=zh_CN; iAuthTenantId_prod=10001; X_Tenant_Id=10001; iAuthId_prod=5033918cdf45e86e6cc5c9a86a0c6eea; iAuthUid_prod=10068463; PORTALSOServer=10068463; PORTALSSCookie=5033918cdf45e86e6cc5c9a86a0c6eea; UCSSSOAccount=10068463; UCSSSOToken=5033918cdf45e86e6cc5c9a86a0c6eea; JSESSIONID=2ccd46nng7ytyu13qzuqmggzz7; itHelpTip=true; GerritAccount=aRSCfdbnmczZovkasZvrc.Ixq7j0fyJ4; XSRF_TOKEN=arSCflInKEIhH3X02etTrPNadFr-9Jb][-][0][10.41.103.24:444][0.159]
+
+[29/Jul/2025:09:56:00 +0800][200][10.90.233.89][10.90.233.89][0.024][10279092][-][-][GET /changes/?q=change:23074930+has:draft&0=0 HTTP/1.1][Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36][https://gerrit.ze.com.cn/][RedirectedToNewiCenter=1; JSESSIONID=16151001x1z1u82lxgaxzy73; ZTEDPGSSOUser=10279092; ZTEDPGSSOCookie=3bfa443d283c9fbdf87d4b4e05c43ed9; ZTEDPGSSOLanguage=zh_CN; ZTEDPGSSOVersionType=1; udsVersion=V4.0.1.12; udsClientIp=10.90.233.89; clientSerialNo=00-16-3E-00-22-40; iAuthUid_prod=10279092; iAuthUserId_prod=10279092; iAuthLanguage_prod=zh_CN; PORTALSOServer=10279092; UCSSSOAccount=10279092; PORTALSOLanguage=zh_CN; UCSSSOLanguage=zh_CN; iAuthTenantId_prod=10001; X_Tenant_Id=10001; iAuthId_prod=c859e31171f183a5218ccceeb702ae32f; PORTALSSCookie=c859e31171f183a5218ccceeb702ae32f; UCSSSToken=c859e31171f183a5218ccceeb702ae32f; CALLanguageID=2052; GerritAccount=aPJ8XWeuyJs55OHNsqZ92mTY-fIrWNkuBa; XSRF_TOKEN=aPJ8XWeulL9GnxNUu4GHrqGUVgxRrvM.A2ee; itHelpTip=true][-][8][10.41.103.27:444][0.025]
+
+[29/Jul/2025:09:56:00 +0800][200][10.90.232.31][10.90.232.31][0.142][10307602][-][-][GET /changes/23075027/submitted_together HTTP/1.1][Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36][https://gerrit.ze.com.cn/][firstJump-10307602=1; DocProtaLoginName=MTAzMDc2MDI=; DocProtaLanguageId=2052; RedirectedToNewiCenter=1; Hm_lvt_98a7f1bca4c6826d3079a7ea36f95f30=1752376014; iAuthUID_prod=10307602; UCSSSOAccount=10307602; iAuthLanguage_prod=zh_CN; UCSSSOLanguage=zh_CN; iAuthTenantId_prod=10001; X_Tenant_Id=10001; UDM_Language=zh-CN; X-DISK-CODE=; ZTEDPGSSOVersionType=1; iAuthUserId_prod=10307602; clientSerialNo=00-16-3E-00-9C-25; udsClientIp=10.90.232.31; udsVersion=V3.6.3build17; times=491; UDM_SessionId=MTVFRTAYQTBDOQTQWQjBFQjc3NzE1NzVBMDhFMkQ2RkM=; UDM_SysParams=k1FqeHkvTC90eXc5U1VNaDdtSnN5VTF4V3Mvc2d4VG9HdfPvcGxKUVBrc1ZZTGVUaENwZjU5cW1.1] [Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36] https://gerrit.ztc.com.cn/[firstJump-10307602=1; DocProtoLaLongineName=MTaZMDC2MDI=; DocProtoLaLanguageId=2052; RedirectedToNewiCenter=1; Hm-lvt_98a7f1bca4c6826d3079a7ea36f95f30=1752376014; iAuthUid_prod=10307602; UCSS00Account=10307602; iAuthLanguage_prod=zh_CN; UCSSS01anguage=zh_CN; iAuthTenantId_prod=10001; X_Tenant_Id=10001; UDM_Language=zh-CN; X-DISK-CODE=; ZTEDPGSSOVersionType=1; iAuthUserId=prod=10307602; clientSerialNo=00-16-3E-00-9C-25; udsClientIp=10.90.232.31; udsVersion=V3.6.bui1d17; times=491; UDM_SessionID=MTVFRTAYQTBQDQQWQBQFJQC3NZENIZVBMDHPMKQ2RKM=; UDM_SysParams=KIqfehKvTC9oXeCSu1VNaDdtSnNSVFT4VSVmc24dV69hdfPvcGxKUvBrc1ZZTGVuAEnwZjUScws4RLZNUsOthYyd0luLkUt3DcCLR6R3gyRU9ZdKzXTDE3RFVHL0dLcWZKznpUvRE4dFJWURRtUd9y1NwZHVC2tQxbj9pSGdmU3d5M3FxweWdJRVL5ZGtdhVfNeVvbLdtQWXdZWFSJrRT0RJMjBKTHNYRGJrk1d2T1RJYLFOMDBCYLFkRMnQDFEzSLdLNohVmU1MtTEcr1vpMvVPcnW1AU0NRa3krNDNPq1dGdWhYSFLp21LZeXMzaEx6NWM5dy9yejVtnge==; iAuthId_prod=935a6e53bd2eb7e133c4fa5ec5f05759; itHelUpTip=true; UCSSS0Token=935a6e53bd2eb7e133c4fa5ec5f05759; JSESSIONID=1krltvyfnkbmi0q7agvnsc2nlm; GerritAccount=aOs-UquiuN9coUniaBa0R4ZWVjMaWth-zc58; XSRF_TOKEN=aOs-UquiuSSZE6Kymjp.qTQY0GLiwZ1zXBAs; ZTEDPGSSOCookie=935a6e53bd2eb7e133c4fa5ec5f05759; ZTEDPGSSOLanguage=zh_CN; ZTEDPGSSOUser=10307602][-][8][10.41.103.24:444][0.141]
+
+步骤1: 观察得到日志行由13个`[]`组成整体上十分规整，但第8个`[]`和第9个`[]`中的内容不够规整因此不考虑，时间属性由于格式可能变化不考虑，最后只剩下第3、第4、第6三个`[]`中的内容，发现第3和第4个`[]`中的内容都相同，因此匹配第3个和第6个;
+
+步骤2: 存在trace信息，因此设计正则表达式来进行匹配，生成正则表达式时考虑到该部分后面有不够规整的部分，使用待匹配部分前面的内容进行精细化生成（看待匹配内容之前和之间有几个方框），生成正则表达式: `/\[(?:[^\]]*)\]\[(?:[^\]]*)\]\[([^\]]*)\]\[(?:[^\]]*)\]\[(?:[^\]]*)\]\[([^\]]*)\]/`
+可以看到生成的正则表达式考虑到的待匹配部分前面内容并进行精细化处理协助匹配
+
+步骤3: 验证成功
+
+步骤4: 按照指定格式输出
+```json
+{
+"result":{
+    "regex":"/\\[(?:[^\\]]*)\\]\\[(?:[^\\]]*)\\]\\[([^\\]]*)\\]\\[(?:[^\\]]*)\\]\\[(?:[^\\]]*)\\]\\[([^\\]]*)\\]/",
+    "description":["用户ip","用户工号，但有时可能为空"]
+}
+}
+```

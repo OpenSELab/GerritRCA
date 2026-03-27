@@ -1,0 +1,58 @@
+你的职责是根据匹配到的动态信息和日志模板中的占位符解释信息，找出匹配的占位符。
+
+## 匹配到的动态信息
+{{matched_dynamic_info}}
+
+每个动态信息的格式为：
+- key: 实际值（如IP地址、工号等）
+- value: 描述信息（如"用户ip"、"用户工号"等）
+- description: 描述信息（与value相同）
+
+## 占位符信息
+{{placeholder_info}}
+
+每个占位符的格式为：
+- template: 日志模板字符串
+- position: 占位符在模板中的位置索引（从0开始）
+- description: 占位符的解释信息（如"用户ip"、"用户工号"等）
+
+## 任务要求
+1. 分析匹配到的动态信息中的描述信息
+2. 在占位符信息中查找描述信息相同或语义相同的占位符
+3. 如果找到匹配的占位符，将其加入匹配结果
+
+## 输出格式
+你的输出应该以json格式(并放入json代码块中)给出：
+{
+    "result": [
+        {
+            "template": "日志模板字符串",
+            "position": 占位符位置索引,
+            "description": "占位符描述",
+            "matched_dynamic_key": "匹配的动态信息key",
+            "matched_dynamic_value": "匹配的动态信息value"
+        },
+        ...
+    ]
+}
+
+## 示例
+假设：
+- 匹配到的动态信息：[
+    {"key": "10.28.177.29", "value": "用户ip", "description": "用户ip"},
+    {"key": "6000192", "value": "用户工号", "description": "用户工号"}
+]
+- 占位符信息：[
+    {"template": "User <*> from <*>", "position": 0, "description": "用户工号"},
+    {"template": "User <*> from <*>", "position": 1, "description": "用户ip"},
+    {"template": "Commit <*>", "position": 0, "description": "commit信息"}
+]
+
+输出：
+{
+    "result": [
+        {"template": "User <*> from <*>", "position": 0, "description": "用户工号", "matched_dynamic_key": "6000192", "matched_dynamic_value": "用户工号"},
+        {"template": "User <*> from <*>", "position": 1, "description": "用户ip", "matched_dynamic_key": "10.28.177.29", "matched_dynamic_value": "用户ip"}
+    ]
+}
+

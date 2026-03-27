@@ -1,0 +1,31 @@
+
+
+cat  日志文件 | grep "10.6.25.177"
+
+ip：10.6.25.177
+
+工号：068804234
+
+{
+ip：10.6.25.177
+工号：068804234
+目标代码仓库：/lte/Code_Itran
+}
+
+时间  日志等级 :transfer host ip 10.221.11.22  to server 10.11.22.11  日志
+[][][][]
+transfer host ip <*>  to server <*> ,原ip，目标ip
+
+[gitUploadPool-567 SSH git git-upload-pack '/lte/Code_Itran' 0668000754 10.2.77.227] com.zte.gerrit.sshproxy.config.RouterManageConfig [339] -| start connect test:10.1.61.106-29420
+[gitUploadPool-567 SSH git git-upload-pack '<*>' <*> <*>] com.zte.gerrit.sshproxy.config.RouterManageConfig [<*>] -| start connect test:<*>-<*>
+
+
+
+limits['ip','代码仓库','用户名']
+
+
+10.221.11.22 10.11.22.11  日志解析结果
+
+aa@10.12.1212.11 ：sssh
+
+publickey

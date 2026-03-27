@@ -1,0 +1,18 @@
+上文给出了要求你进行日志文件排查顺序的生成，但是经过检查发现，你所生成的排查顺序中包含不属于默认故障排查顺序的日志文件，请根据上文生成的条件重新生成
+
+## 不属于默认故障排查顺序的日志文件
+{{extra_file}}
+
+## 默认排查顺序
+{{calling_seq}}
+请注意，以上日志文件包含当前任务可能相关的所有相关的日志文件以`;`进行分割，`#`表示归属关系。例如 gerrit#error_log;gerrit#ssh_log 表示两个日志文件，分别是gerrit平台产生的error_log和gerrit平台产生的ssh_log
+nginx#gerrit#ssh_access.log表示转发gerrit服务端的nginx平台的ssh_access.log
+
+## 输出格式
+你的最后生成需要包含以下两个部分:
+Reason:你所生产的故障排查顺序的解释
+Check_Sequence:故障排查的文件顺序以及每个部分的解释 (每个步骤的排查文件都要以`平台#文件#具体所需的文件`的格式给出，排查文件之间以分号(`;`)隔开,不可自定义格式)
+
+## 下面是一个输出示例 (假设故障信息为: 用户在上海使用ssh方式从gerrit下载代码失败)
+Reason:代码下载任务请求主库或者镜像节点，可能是由于请求传输有误，也可能是对应gerrit节点的问题，因此需要按照上文给的任务执行顺序先检查请求的传输路径上的日志文件，再排查gerrit节点的
+Check_Sequence:nginx#gerrit#ssh_access.log#"用户请求区域的nginx服务器下的ssh_access.log";ssh-proxy#gerrit-ssh-proxy.log#"转发用户请求的ssh代理链路端的gerrit-ssh-proxy.log日志";gerrit#sshd_log#"所请求的gerrit节点的sshd_log";gerrit#highAvailability_log#"gerrit节点或gerrit事件节点记录事件的highAvailability_log日志";gerrit#before_rep_log#"gerrit节点或gerrit事件节点记录操作事件发出之前的日志";gerrit#after_rep_log#"gerrit节点或gerrit事件节点记录操作事件发出之后的日志";jenkins#access_log;linux#sys_log;gerrit#error.log

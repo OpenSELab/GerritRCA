@@ -1,0 +1,5 @@
+192.168.2.100 - - [09/Sep/2025:10:00:00 +0800] "GET /gerrit/#/q/status:open+project:core-framework HTTP/1.1" 200 12540 "https://gerrit.example.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/116.0.0.0" "172.16.3.101"
+192.168.2.102 - - [09/Sep/2025:10:00:02 +0800] "POST /gerrit/a/changes/14589/revisions/2/comments HTTP/1.1" 201 389 "https://gerrit.example.com/gerrit/#/c/14589/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) Safari/605.1.15" "172.16.3.102"
+192.168.2.200 - - [09/Sep/2025:10:00:01 +0800] "GET /jenkins/job/build-core/lastBuild/console HTTP/1.1" 200 8960 "https://ci.example.com/jenkins/" "Mozilla/5.0 (Linux; Android 13) Chrome/117.0.0.0" "172.16.3.300"
+192.168.2.201 - - [09/Sep/2025:10:00:02 +0800] "GET /wiki/pages/ProjectDoc HTTP/1.1" 304 0 "https://wiki.example.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Edge/116.0.1938.81" "172.16.3.301"
+192.168.2.202 - - [09/Sep/2025:10:00:03 +0800] "POST /monitor/api/metrics HTTP/1.1" 200 56 "https://monitor.example.com/dashboard" "Python-urllib/3.9" "172.16.3.302"
