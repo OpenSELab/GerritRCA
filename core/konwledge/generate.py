@@ -1,9 +1,6 @@
 # coding=utf-8
 # @Time : 2025/6/17 19:31
-# @Author : RoseLee
-# @File : generate
-# @Project : fault-analysis
-# @Description :
+
 """
 以日志数据为输入，输出知识库
 

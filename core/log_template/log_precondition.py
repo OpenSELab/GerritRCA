@@ -1,9 +1,5 @@
 # coding=utf-8
-# @Time : 2025/3/3 19:04
-# @Author : RoseLee
-# @File : precondition
-# @Project : fault-analysis
-# @Description : 进行日志模板解析前的预处理:日志文件加载、日志前缀处理。
+
 import re
 
 import pandas as pd

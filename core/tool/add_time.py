@@ -1,9 +1,4 @@
 # coding=utf-8
-# @Time : 2026/1/25 15:25
-# @Author : RoseLee
-# @File : add_time
-# @Project : fault-analysis
-# @Description :为已经有的json添加时间
 
 import json
 import os

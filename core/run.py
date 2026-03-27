@@ -1,9 +1,5 @@
 # coding=utf-8
-# @Time : 2026/3/19 17:26
-# @Author : RoseLee
-# @File : run
-# @Project : zte-fault-analysis
-# @Description :
+
 import json
 import os
 import time

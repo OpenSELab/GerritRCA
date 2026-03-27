@@ -1,8 +1,4 @@
 # coding=utf-8
-# @Time : 2025/9/8 11:23
-# @Author : RoseLee
-# @File : konwledge_extrct
-# @Project : fault-analysis
 # @Description : 进行知识库自动化提取
 
 from loguru import logger

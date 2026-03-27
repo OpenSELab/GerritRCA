@@ -1,9 +1,5 @@
 # coding=utf-8
-# @Time : 2025/3/3 19:36
-# @Author : RoseLee
-# @File : base
-# @Project : fault-analysis
-# @Description :
+
 import re
 from typing import Dict, Any, Optional
 

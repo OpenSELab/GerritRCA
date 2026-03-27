@@ -1,9 +1,4 @@
 # coding=utf-8
-# @Time : 2025/7/22 10:02
-# @Author : RoseLee
-# @File : match
-# @Project : fault-analysis
-# @Description :
 import os
 import re
 import json
