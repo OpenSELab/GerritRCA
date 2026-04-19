@@ -1,0 +1,8 @@
+openai
+requests
+tenacity
+loguru
+pandas
+jinja2
+sentence-transformers
+scikit-learn

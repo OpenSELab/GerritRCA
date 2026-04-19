@@ -1,4 +1,7 @@
 # coding=utf-8
+# @File : add_time
+# @Project : fault-analysis
+# @Description :为已经有的json添加时间
 
 import json
 import os
@@ -26,7 +29,7 @@ def modify_json_file(file_path):
 
         # 示例修改：根据数据类型（字典/列表）进行修改
         if isinstance(data, dict):
-            llm = LLMClient(configs.DEEPSEEK_CONFIG)
+            llm = LLMClient(configs.LLM_CONFIG)
             while True:
                 time.sleep(5)
                 try:

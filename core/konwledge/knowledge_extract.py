@@ -1,4 +1,6 @@
 # coding=utf-8
+# @File : konwledge_extrct
+# @Project : fault-analysis
 # @Description : 进行知识库自动化提取
 
 from loguru import logger
@@ -581,6 +583,6 @@ if __name__ == '__main__':
         path='/home/6000015813/log_to_analysis/now',
         lib='resource/code_map.csv',
         sample_points=10,
-        llm_config=configs.ZTE_V3_CONFIG,
+        llm_config=configs.LLM_CONFIG,
         input_file=['https_access.log', 'ssh_access.log']
     )

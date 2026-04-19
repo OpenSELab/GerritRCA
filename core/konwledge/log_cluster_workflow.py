@@ -1,5 +1,7 @@
 # coding=utf-8
-
+# @File : log_cluster_workflow
+# @Project : fault-analysis
+# @Description :
 """
 基于正常日志簇，利用大模型完成任务聚类与流程归一化。
 """
@@ -25,7 +27,7 @@ class LogClusterWorkflowBuilder:
     注意: 输入的 clusters 应为 {编号: 日志簇} 字典格式
     """
 
-    def __init__(self, llm_config: Dict[str, Any] = configs.ZTE_V3_CONFIG, max_desc_per_task: int = 5):
+    def __init__(self, llm_config: Dict[str, Any] = configs.LLM_CONFIG, max_desc_per_task: int = 5):
         self.llm = ZteLLMClient(llm_config=llm_config)
         self.max_desc_per_task = max_desc_per_task
         # 初始化 PromptLoader

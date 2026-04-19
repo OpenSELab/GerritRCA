@@ -1,0 +1,1608 @@
+[
+  {
+    "id": 1,
+    "description": "代码下载失败",
+    "messgae": "RoseLee@LAPTOP-001 MINGW64 /e/Self_code/PycharmProjects/ZTE\n$ git clone \"ssh://roselee@SElab:29418/gerrit-code\" && (cd \"gerrit-code\" && mkdir -p `git rev-parse --git-dir`/hooks/ && curl -Lo `git rev-parse --git-dir`/hooks/commit-msg http://SElab:8081/tools/hooks/commit-msg && chmod +x `git rev-parse --git-dir`/hooks/commit-msg)\nCloning into 'gerrit-code'...\nssh: connect to host selab port 29418: Connection timed out\nfatal: Could not read from remote repository.\n\nPlease make sure you have the correct access rights\nand the repository exists.\n",
+    "root_case": "网络连接问题",
+    "logs": {
+      "sshd_log": [],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 2,
+    "description": "jenkins配置gerrit服务器认证失败",
+    "messgae": "Connection error : com.jcraft.jsch.JSchException: Auth fail for methods 'publickey'",
+    "root_case": "用户名配置失败",
+    "logs": {
+      "sshd_log": [],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [
+        "2025-08-27 07:04:33.186+0000 [id=302] INFO c.s.h.p.g.t.g.ToGerritRunListener#onTriggered: Project [demo1] triggered by Gerrit: [PatchsetCreated: Change-Id for #241: Ic112a59e81a7de52d1f9cd397cfca4f01d77c071 PatchSet: 1]\n2025-08-27 07:04:33.190+0000 [id=302] INFO c.s.h.p.g.t.h.EventListener#schedule: Project demo1 Build Scheduled: true By event: 241/1\n2025-08-27 07:04:38.745+0000 [id=511] INFO c.s.h.p.g.t.g.ToGerritRunListener#onStarted: Gerrit build [demo1 #33] Started for cause: [GerritCause: PatchsetCreated: Change-Id for #241: Ic112a59e81a7de52d1f9cd397cfca4f01d77c071 PatchSet: 1 silent: false].\n2025-08-27 07:04:38.746+0000 [id=511] INFO c.s.h.p.g.t.g.ToGerritRunListener#onStarted: MemoryStatus:\n  Project/Build: [demo1]: [#33: null] Completed: false\n\n2025-08-27 07:04:38.756+0000 [id=314] SEVERE c.s.t.g.g.w.r.AbstractRestCommandJob#run: Gerrit response: Unauthorized\n"
+      ],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 3,
+    "description": "触发流水线失败",
+    "messgae": "无明显信息",
+    "root_case": "Jenkins用户密码配置错误",
+    "logs": {
+      "sshd_log": [
+        "[2025-08-27T15:04:32.840+08:00] 59a47598 [sshd-SshDaemon[76b17a78](port=22)-nio2-thread-16] roselee a/1000000 LOGIN FROM 192.168.5.7",
+        "[2025-08-27T15:04:33.107+08:00] 59a47598 [SSH git-receive-pack /gerrit-code (roselee)] roselee a/1000000 git-receive-pack./gerrit-code 2ms 201ms - 0 git/2.37.0.windows.1 29ms 20ms 3023568",
+        "[2025-08-27T15:04:33.203+08:00] 59a47598 [sshd-SshDaemon[76b17a78](port=22)-nio2-thread-11] roselee a/1000000 LOGOUT",
+        "[2025-08-27T15:04:39.033+08:00] be1b17f3 [sshd-SshDaemon[76b17a78](port=22)-nio2-thread-17] jenkins a/1000002 LOGIN FROM 192.168.5.3",
+        "[2025-08-27T15:04:39.088+08:00] be1b17f3 [SSH git-upload-pack /gerrit-code (jenkins)] jenkins a/1000002 git-upload-pack./gerrit-code 1ms 46ms '-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1' 0 - 1ms 0ms 126472",
+        "[2025-08-27T15:04:39.131+08:00] be1b17f3 [sshd-SshDaemon[76b17a78](port=22)-nio2-thread-12] jenkins a/1000002 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [
+        "[2025-08-27T15:04:33.071+08:00] [ReceiveCommits-1[receive-commits]-for-SSH git-receive-pack /gerrit-code (roselee)] INFO  com.googlesource.gerrit.plugins.hooks.HookFactory : hooks.commitReceivedHook resolved to /home/liqiangwei/opt/module/gerrit/hooks/commit-received [CONTEXT RECEIVE_ID=\"gerrit-code-1756278273053-25724540\" project=\"gerrit-code\" request=\"GIT_RECEIVE\" ]",
+        "[2025-08-27T15:04:33.104+08:00] [ReceiveCommits-1[receive-commits]-for-SSH git-receive-pack /gerrit-code (roselee)] INFO  com.googlesource.gerrit.plugins.hooks.HookFactory : hooks.patchsetCreatedHook resolved to /home/liqiangwei/opt/module/gerrit/hooks/patchset-created [CONTEXT RECEIVE_ID=\"gerrit-code-1756278273053-25724540\" project=\"gerrit-code\" request=\"GIT_RECEIVE\" ]",
+        "[2025-08-27T15:04:33.105+08:00] [SSH git-receive-pack /gerrit-code (roselee)] INFO  com.google.gerrit.server.git.MultiProgressMonitor : Processing changes: refs: 1, new: 1 [CONTEXT ratelimit_period=\"1 MINUTES\" ]",
+        "[2025-08-27T15:04:38.771+08:00] [HTTP-1568] WARN  com.google.gerrit.httpd.ProjectBasicAuthFilter : Authentication from 192.168.5.3 failed for jenkins: password does not match the one stored in Gerrit"
+      ],
+      "events_log": [],
+      "jenkins.log": [
+        "2025-08-27 07:04:33.186+0000 [id=302] INFO c.s.h.p.g.t.g.ToGerritRunListener#onTriggered: Project [demo1] triggered by Gerrit: [PatchsetCreated: Change-Id for #241: Ic112a59e81a7de52d1f9cd397cfca4f01d77c071 PatchSet: 1]\n2025-08-27 07:04:33.190+0000 [id=302] INFO c.s.h.p.g.t.h.EventListener#schedule: Project demo1 Build Scheduled: true By event: 241/1\n2025-08-27 07:04:38.745+0000 [id=511] INFO c.s.h.p.g.t.g.ToGerritRunListener#onStarted: Gerrit build [demo1 #33] Started for cause: [GerritCause: PatchsetCreated: Change-Id for #241: Ic112a59e81a7de52d1f9cd397cfca4f01d77c071 PatchSet: 1 silent: false].\n2025-08-27 07:04:38.746+0000 [id=511] INFO c.s.h.p.g.t.g.ToGerritRunListener#onStarted: MemoryStatus:\n  Project/Build: [demo1]: [#33: null] Completed: false\n\n2025-08-27 07:04:38.756+0000 [id=314] SEVERE c.s.t.g.g.w.r.AbstractRestCommandJob#run: Gerrit response: Unauthorized\n"
+      ],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 4,
+    "description": "代码上传失败",
+    "messgae": "RoseLee@LAPTOP-001 MINGW64 /e/Self_code/PycharmProjects/Others/gerrit-code (master)\n$ git push --progress \"origin\" master:refs/for/master\nssh: connect to host selab port 29418: Connection refused\nfatal: Could not read from remote repository.\n\nPlease make sure you have the correct access rights\nand the repository exists.\n\n",
+    "root_case": "gerrit服务停止",
+    "logs": {
+      "sshd_log": [],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 5,
+    "description": "代码同步失败",
+    "messgae": "RoseLee@LAPTOP-001 MINGW64 /e/Self_code/PycharmProjects/Others/gerrit-code (master)\n$ git pull\nssh: connect to host selab port 29418: Connection refused\nfatal: Could not read from remote repository.\n\nPlease make sure you have the correct access rights\nand the repository exists.\n",
+    "root_case": "gerrit服务停止",
+    "logs": {
+      "sshd_log": [],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 6,
+    "description": "jenkins配置gerrit服务器认证失败",
+    "messgae": "Connection error : com.jcraft.jsch.JSchException: java.net.ConnectException: 连接被拒绝",
+    "root_case": "gerrit服务停止",
+    "logs": {
+      "sshd_log": [],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 7,
+    "description": "代码下载失败",
+    "messgae": "RoseLee@LAPTOP-001 MINGW64 ~/Desktop/pre-experence-niuma/25_8\n$ git clone \"ssh://roselee@SElab:29418/gerrit-code\" && (cd \"gerrit-code\" && mkdir -p `git rev-parse --git-dir`/hooks/ && curl -Lo `git rev-parse --git-dir`/hooks/commit-msg http://SElab:8081/tools/hooks/commit-msg && chmod +x `git rev-parse --git-dir`/hooks/commit-msg)\nCloning into 'gerrit-code'...\nssh: connect to host selab port 29418: Connection refused\nfatal: Could not read from remote repository.\n\nPlease make sure you have the correct access rights\nand the repository exists.\n",
+    "root_case": "gerrit服务停止",
+    "logs": {
+      "sshd_log": [],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 8,
+    "description": "手动触发评审流水线失败",
+    "messgae": "com.jcraft.jsch.JSchException: java.net.ConnectException: 连接被拒绝",
+    "root_case": "gerrit服务停止",
+    "logs": {
+      "sshd_log": [],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 9,
+    "description": "代码下载超时",
+    "messgae": "RoseLee@LAPTOP-001 MINGW64 ~/Desktop/pre-experence-niuma/25_8\n$ git clone \"ssh://roselee@SElab:29418/gerrit-code\" && (cd \"gerrit-code\" && mkdir -p `git rev-parse --git-dir`/hooks/ && curl -Lo `git rev-parse --git-dir`/hooks/commit-msg http://SElab:8081/tools/hooks/commit-msg && chmod +x `git rev-parse --git-dir`/hooks/commit-msg)\nCloning into 'gerrit-code'...\nssh: connect to host selab port 29418: Connection timed out\nfatal: Could not read from remote repository.\n\nPlease make sure you have the correct access rights\nand the repository exists.\n",
+    "root_case": "网络堵塞",
+    "logs": {
+      "sshd_log": [],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 10,
+    "description": "代码上传超时",
+    "messgae": "RoseLee@LAPTOP-001 MINGW64 /e/Self_code/PycharmProjects/Others/gerrit-code (master)\n$ git push --progress \"origin\" master:refs/for/master\nssh: connect to host selab port 29418: Connection timed out\nfatal: Could not read from remote repository.\n\nPlease make sure you have the correct access rights\nand the repository exists.\n\n",
+    "root_case": "网络堵塞",
+    "logs": {
+      "sshd_log": [],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 11,
+    "description": "代码更新超时",
+    "messgae": "RoseLee@LAPTOP-001 MINGW64 /e/Self_code/PycharmProjects/Others/gerrit-code (master)\n$ git pull\nssh: connect to host selab port 29418: Connection timed out\nfatal: Could not read from remote repository.\n\nPlease make sure you have the correct access rights\nand the repository exists.\n",
+    "root_case": "网络堵塞",
+    "logs": {
+      "sshd_log": [],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 12,
+    "description": "jenkins配置gerrit服务器超时",
+    "messgae": "Connection error : com.jcraft.jsch.JSchException: java.net.ConnectException: 连接超时",
+    "root_case": "网络堵塞",
+    "logs": {
+      "sshd_log": [],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [
+        "2025-09-04 16:12:45.789+0800 [id=1234] INFO hudson.plugins.gerrit.trigger.GerritServer#testConnection: Testing connection to Gerrit server at 192.168.5.2:29418\n2025-09-04 16:12:45.912+0800 [id=1234] SEVERE hudson.plugins.gerrit.trigger.GerritServer#testConnection: Failed to connect to Gerrit server: Permission denied (publickey).\ncom.jcraft.jsch.JSchException: Auth fail\n at com.jcraft.jsch.Session.connect(Session.java:558)\n at com.jcraft.jsch.Session.connect(Session.java:183)\n at hudson.plugins.gerrit.trigger.GerritServer.testConnection(GerritServer.java:456)\n at hudson.plugins.gerrit.trigger.config.IGerritHudsonTriggerConfig.testConnection(IGerritHudsonTriggerConfig.java:123)\n at hudson.plugins.gerrit.trigger.GerritTrigger.doTestConnection(GerritTrigger.java:789)"
+      ],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 13,
+    "description": "浏览器访问失败",
+    "messgae": "浏览器访问超时",
+    "root_case": "网络堵塞",
+    "logs": {
+      "sshd_log": [],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 14,
+    "description": "提交代码失败",
+    "messgae": "RoseLee@LAPTOP-001 MINGW64 /e/Self_code/PycharmProjects/Others/gerrit-code (master)\n$ git push --progress \"origin\" master:refs/for/master\nssh: connect to host selab port 29418: Connection timed out\nfatal: Could not read from remote repository.\n\nPlease make sure you have the correct access rights\nand the repository exists.\n",
+    "root_case": "ssh端口被阻断",
+    "logs": {
+      "sshd_log": [],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 15,
+    "description": "jenkins配置gerrit服务器失败",
+    "messgae": "Connection error : com.jcraft.jsch.JSchException: java.net.NoRouteToHostException: 没有到主机的路由",
+    "root_case": "Jenkins配置的目标gerrit地址错误",
+    "logs": {
+      "sshd_log": [],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 16,
+    "description": "浏览器访问缓慢",
+    "messgae": "无明显信息",
+    "root_case": "网络堵塞",
+    "logs": {
+      "sshd_log": [],
+      "httpd_log": [
+        "192.168.5.7 [HTTP-3065] - roselee [2025-08-29T16:51:23.717+08:00] \"GET /changes/?O=5000081&S=0&q=has%3Adraft%20limit%3A10&q=attention%3Aself%20limit%3A25&q=is%3Aopen%20owner%3Aself%20is%3Awip%20limit%3A25&q=is%3Aopen%20owner%3Aself%20-is%3Awip%20limit%3A25&q=is%3Aopen%20-owner%3Aself%20-is%3Awip%20reviewer%3Aself%20limit%3A25&q=is%3Aopen%20-is%3Awip%20cc%3Aself%20limit%3A10&q=is%3Aclosed%20%28-is%3Awip%20OR%20owner%3Aself%29%20%28owner%3Aself%20OR%20reviewer%3Aself%20OR%20cc%3Aself%29%20-age%3A4w%20limit%3A10&q=owner%3Aself%20limit%3A1&allow-incomplete-results=true HTTP/1.1\" 200 2764 8 - \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0\" 8 1503 322614400 -"
+      ],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 17,
+    "description": "触发评审流水线失败",
+    "messgae": "无明显信息",
+    "root_case": "jenkins服务器关闭",
+    "logs": {
+      "sshd_log": [
+        "[2025-09-03T14:22:15.673+08:00] 8c3d9f71 [sshd-SshDaemon[4a7e2b9c](port=22)-nio2-thread-28] roselee a/1000000 LOGIN FROM 192.168.5.7",
+        "[2025-09-03T14:22:16.128+08:00] 8c3d9f71 [SSH git-receive-pack /gerrit-code (roselee)] roselee a/1000000 git-receive-pack./gerrit-code 4ms 267ms - 0 git/2.38.1 35ms 24ms 3891245",
+        "[2025-09-03T14:22:16.492+08:00] 8c3d9f71 [sshd-SshDaemon[4a7e2b9c](port=22)-nio2-thread-33] roselee a/1000000 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [
+        "[2025-09-03 14:22:16,341] event received type:ref-updated---->json:{\"submitter\":{\"email\":\"roselee@nuaa.edu.cn\",\"username\":\"roselee\"},\"refUpdate\":{\"oldRev\":\"0000000000000000000000000000000000000000\",\"newRev\":\"d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4\",\"refName\":\"refs/changes/67/1567/1\",\"project\":\"gerrit-code\"},\"type\":\"ref-updated\",\"eventCreatedOn\":1756890136}---->status:204",
+        "[2025-09-03 14:22:16,374] event received type:patchset-created---->json:{\"uploader\":{\"email\":\"roselee@nuaa.edu.cn\",\"username\":\"roselee\"},\"patchSet\":{\"number\":1,\"revision\":\"d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4\",\"parents\":[\"0000000000000000000000000000000000000000\"],\"ref\":\"refs/changes/67/1567/1\",\"uploader\":{\"email\":\"roselee@nuaa.edu.cn\",\"username\":\"roselee\"},\"createdOn\":1756890136,\"author\":{\"email\":\"roselee@nuaa.edu.cn\",\"username\":\"roselee\"},\"kind\":\"REWORK\",\"sizeInsertions\":18,\"sizeDeletions\":5},\"change\":{\"project\":\"gerrit-code\",\"branch\":\"master\",\"id\":\"Iabcdef1234567890abcdef1234567890\",\"number\":1567,\"subject\":\"feat: add user profile endpoint\",\"owner\":{\"email\":\"roselee@nuaa.edu.cn\",\"username\":\"roselee\"},\"url\":\"http://192.168.5.2:8081/c/gerrit-code/+/1567\",\"commitMessage\":\"feat: add user profile endpoint\\n\\nChange-Id: Iabcdef1234567890abcdef1234567890\\n\",\"createdOn\":1756890136,\"status\":\"NEW\"},\"project\":\"gerrit-code\",\"refName\":\"refs/heads/master\",\"changeKey\":{\"id\":\"Iabcdef1234567890abcdef1234567890\"},\"type\":\"patchset-created\",\"eventCreatedOn\":1756890136}---->status:204"
+      ],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 18,
+    "description": "触发评审流水线失败",
+    "messgae": "评审区域未显示结果",
+    "root_case": "事件丢失",
+    "logs": {
+      "sshd_log": [
+        "[2025-09-03T09:45:12.334+08:00] d2f8a9c4 [sshd-SshDaemon[5b9e3c1d](port=22)-nio2-thread-19] roselee a/1000000 LOGIN FROM 192.168.5.7",
+        "[2025-09-03T09:45:12.789+08:00] d2f8a9c4 [SSH git-receive-pack /gerrit-code (roselee)] roselee a/1000000 git-receive-pack./gerrit-code 3ms 234ms - 0 git/2.39.0 31ms 22ms 3678902",
+        "[2025-09-03T09:45:13.156+08:00] d2f8a9c4 [sshd-SshDaemon[5b9e3c1d](port=22)-nio2-thread-24] roselee a/1000000 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [
+        "[2025-09-03 09:45:13,012] event received type:ref-updated---->json:{\"submitter\":{\"email\":\"roselee@nuaa.edu.cn\",\"username\":\"roselee\"},\"refUpdate\":{\"oldRev\":\"0000000000000000000000000000000000000000\",\"newRev\":\"4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b\",\"refName\":\"refs/changes/89/1789/1\",\"project\":\"gerrit-code\"},\"type\":\"ref-updated\",\"eventCreatedOn\":1756891513}---->status:204",
+        "[2025-09-03 09:45:13,045] event received type:patchset-created---->json:{\"uploader\":{\"email\":\"roselee@nuaa.edu.cn\",\"username\":\"roselee\"},\"patchSet\":{\"number\":1,\"revision\":\"4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b\",\"parents\":[\"0000000000000000000000000000000000000000\"],\"ref\":\"refs/changes/89/1789/1\",\"uploader\":{\"email\":\"roselee@nuaa.edu.cn\",\"username\":\"roselee\"},\"createdOn\":1756891513,\"author\":{\"email\":\"roselee@nuaa.edu.cn\",\"username\":\"roselee\"},\"kind\":\"REWORK\",\"sizeInsertions\":14,\"sizeDeletions\":3},\"change\":{\"project\":\"gerrit-code\",\"branch\":\"master\",\"id\":\"I9876543210fedcba9876543210fedcba\",\"number\":1789,\"subject\":\"refactor: optimize login service\",\"owner\":{\"email\":\"roselee@nuaa.edu.cn\",\"username\":\"roselee\"},\"url\":\"http://192.168.5.2:8081/c/gerrit-code/+/1789\",\"commitMessage\":\"refactor: optimize login service\\n\\nChange-Id: I9876543210fedcba9876543210fedcba\\n\",\"createdOn\":1756891513,\"status\":\"NEW\"},\"project\":\"gerrit-code\",\"refName\":\"refs/heads/master\",\"changeKey\":{\"id\":\"I9876543210fedcba9876543210fedcba\"},\"type\":\"patchset-created\",\"eventCreatedOn\":1756891513}---->status:204"
+      ],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 19,
+    "description": "gerrit用户登录失败",
+    "messgae": "输入用户名为roselee，用户ip为192.168.5.7",
+    "root_case": "代理服务器用户名或密码错误",
+    "logs": {
+      "sshd_log": [],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [
+        "2025/09/03 10:15:47 [error] 3124#3124: *67 user \"roselee\" was not found in \"/opt/config/gerrit.password\", client: 192.168.5.7, server: localhost, request: \"GET /login/ HTTP/1.1\""
+      ],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 20,
+    "description": "gerrit用户登录失败",
+    "messgae": "输入用户名为roselee，用户ip为192.168.5.8",
+    "root_case": "代理服务器用户名或密码错误",
+    "logs": {
+      "sshd_log": [],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [
+        "2025/09/03 10:18:22 [error] 3124#3124: *72 user \"tom\" password mismatch, client: 192.168.5.8, server: localhost, request: \"POST /login/%2F HTTP/1.1\""
+      ],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 21,
+    "description": "代码上传失败",
+    "messgae": "remote: Permission denied (publickey).\nfatal: Could not read from remote repository.\n\nPlease make sure you have the correct access rights\nand the repository exists.\n\n用户ip：192.168.5.13\n用户名：bill",
+    "root_case": "sshkey配置错误",
+    "logs": {
+      "sshd_log": [
+        "[2025-09-03T13:47:28.912+08:00] 1a9f3e6b [SSHD] bill - AUTH FAILURE FROM 192.168.5.13 - - - key-list-empty - - - -"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 22,
+    "description": "代码上传失败",
+    "messgae": "remote: Permission denied (publickey).\nfatal: Could not read from remote repository.\n\nPlease make sure you have the correct access rights\nand the repository exists.\n\n用户ip：192.168.5.13\n用户名：bill",
+    "root_case": "sshkey配置错误",
+    "logs": {
+      "sshd_log": [
+        "[2025-09-03T13:48:41.567+08:00] 4c2d7f9e [SSHD] tom - AUTH FAILURE FROM 192.168.5.8 - - - no-matching-key - - - -"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 23,
+    "description": "代码上传失败",
+    "messgae": "remote: Permission denied (publickey).\nfatal: Could not read from remote repository.\n\nPlease make sure you have the correct access rights\nand the repository exists.\n\n用户ip：192.168.5.13\n用户名：bill",
+    "root_case": "sshkey配置错误",
+    "logs": {
+      "sshd_log": [
+        "[2025-09-03T13:50:03.234+08:00] 7e5b8a0d [SSHD] hyj - AUTH FAILURE FROM 192.168.5.10 - - - key-list-empty - - - -"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 24,
+    "description": "代码上传失败",
+    "messgae": "remote: Permission denied (publickey).\nfatal: Could not read from remote repository.\n\nPlease make sure you have the correct access rights\nand the repository exists.\n用户ip：192.168.5.7\n用户名：wronguser",
+    "root_case": "用户名配置错误",
+    "logs": {
+      "sshd_log": [
+        "[2025-09-03T14:10:55.678+08:00] 3b7e1f9a [SSHD] wronguser - AUTH FAILURE FROM 192.168.5.7 - - - user-not-found - - - -"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 25,
+    "description": "代码上传失败",
+    "messgae": "remote: Permission denied (publickey).\nfatal: Could not read from remote repository.\n\nPlease make sure you have the correct access rights\nand the repository exists.\n用户ip：192.168.5.8\n用户名：tomwrong",
+    "root_case": "用户名配置错误",
+    "logs": {
+      "sshd_log": [
+        "[2025-09-03T14:12:41.123+08:00] 6d9f2c8b [SSHD] tomwrong - AUTH FAILURE FROM 192.168.5.8 - - - user-not-found - - - -"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 26,
+    "description": "代码上传失败",
+    "messgae": "remote: Permission denied (publickey).\nfatal: Could not read from remote repository.\n\nPlease make sure you have the correct access rights\nand the repository exists.\n用户ip：192.168.5.10\n用户名：hyj_fake",
+    "root_case": "用户名配置错误",
+    "logs": {
+      "sshd_log": [
+        "[2025-09-03T14:15:19.456+08:00] 8a4c5e2d [SSHD] hyj_fake - AUTH FAILURE FROM 192.168.5.10 - - - user-not-found - - - -"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 27,
+    "description": "代码下载失败",
+    "messgae": "RoseLee@LAPTOP-001 MINGW64 /e/Self_code/PycharmProjects/Others/gerrit-code (master)\n$ git push --progress \"origin\" master:refs/for/master\nssh: connect to host selab port 29418: Connection refused\nfatal: Could not read from remote repository.\n\n用户ip：192.168.5.7\n用户名：roselee\n仓库地址：gerrit-code",
+    "root_case": "gerrit用户未配置ssh公钥",
+    "logs": {
+      "sshd_log": [
+        "[2025-09-03T15:27:41.892+08:00] 5e9c2f7d [SSHD] roselee - AUTH FAILURE FROM 192.168.5.7 - - - key-list-empty - - - -"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 28,
+    "description": "代码下载失败",
+    "messgae": "Tom@DESKTOP-ABC123 MINGW64 /d/projects/my-app (develop)\n$ git fetch origin\nssh: connect to host selab port 29418: Connection refused\nfatal: Could not read from remote repository.\n\n用户ip：192.168.5.8\n用户名：tom\n仓库地址：gerrit-code",
+    "root_case": "gerrit用户未配置ssh公钥",
+    "logs": {
+      "sshd_log": [
+        "[2025-09-03T15:29:18.346+08:00] 2a8d4e1f [SSHD] tom - AUTH FAILURE FROM 192.168.5.8 - - - key-list-empty - - - -"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 29,
+    "description": "代码下载失败",
+    "messgae": "hyj@MacBook-Pro.local ~ % cd ~/work/gerrit-project && git pull origin master\nssh: connect to host selab port 29418: Connection refused\nfatal: Could not read from remote repository.\n\n用户ip：192.168.5.10\n用户名：hyj\n仓库地址：gerrit-code",
+    "root_case": "gerrit用户未配置ssh公钥",
+    "logs": {
+      "sshd_log": [
+        "[2025-09-03T15:31:05.774+08:00] 7b3f6c9a [SSHD] hyj - AUTH FAILURE FROM 192.168.5.10 - - - key-list-empty - - - -"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 30,
+    "description": "代码下载失败",
+    "messgae": "RoseLee@LAPTOP-001 MINGW64 /e/Self_code/PycharmProjects/Others/gerrit-code (master)\n$ git fetch --progress \"origin\"\nssh: connect to host selab port 29418: Connection refused\nfatal: Could not read from remote repository.\n用户ip：192.168.5.7\n用户名：roselee\n仓库地址：gerrit-code",
+    "root_case": "sshkey配置错误",
+    "logs": {
+      "sshd_log": [
+        "[2025-09-03T16:12:34.567+08:00] 9d4e1c7f [SSHD] roselee - AUTH FAILURE FROM 192.168.5.7 - - - no-matching-key - - - -"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 31,
+    "description": "代码下载失败",
+    "messgae": "Tom@DESKTOP-XYZ MINGW64 /d/work/my-project (develop)\n$ git pull origin develop\nssh: connect to host selab port 29418: Connection refused\nfatal: Could not read from remote repository.\n用户ip：192.168.5.8\n用户名：tom\n仓库地址：gerrit-code",
+    "root_case": "sshkey配置错误",
+    "logs": {
+      "sshd_log": [
+        "[2025-09-03T16:14:09.821+08:00] 3f6a2b8e [SSHD] tom - AUTH FAILURE FROM 192.168.5.8 - - - no-matching-key - - - -"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 32,
+    "description": "代码下载失败",
+    "messgae": "hyj@MacBook-Pro.local ~/projects/gerrit-test (main)\n$ git fetch origin\nssh: connect to host selab port 29418: Connection refused\nfatal: Could not read from remote repository.\n用户ip：192.168.5.10\n用户名：hyj\n仓库地址：gerrit-code",
+    "root_case": "sshkey配置错误",
+    "logs": {
+      "sshd_log": [
+        "[2025-09-03T16:16:45.233+08:00] 5c9b7d1a [SSHD] hyj - AUTH FAILURE FROM 192.168.5.10 - - - no-matching-key - - - -"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 33,
+    "description": "代码下载失败",
+    "messgae": "bill@WIN-PC-789 MINGW64 /c/dev/gerrit-app (feature/new-ui)\n$ git pull origin feature/new-ui\nssh: connect to host selab port 29418: Connection refused\nfatal: Could not read from remote repository.\n用户ip：192.168.5.13\n用户名：bill\n仓库地址：gerrit-code",
+    "root_case": "sshkey配置错误",
+    "logs": {
+      "sshd_log": [
+        "[2025-09-03T16:19:22.456+08:00] 2e8f5c9b [SSHD] bill - AUTH FAILURE FROM 192.168.5.13 - - - no-matching-key - - - -"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 34,
+    "description": "代码下载失败",
+    "messgae": "RoseLee@LAPTOP-001 MINGW64 /e/Self_code/PycharmProjects/Others/gerrit-code (master)\n$ git fetch --progress \"origin\" master\nssh: connect to host selab port 29418: Connection refused\nfatal: Could not read from remote repository.\n用户ip：192.168.5.7\n用户名：wrongrose（实际应为 roselee，但配置错误）\n仓库地址：xcode",
+    "root_case": "用户名配置错误",
+    "logs": {
+      "sshd_log": [
+        "[2025-09-04T09:18:27.341+08:00] 4f7a2d9c [SSHD] wrongrose - AUTH FAILURE FROM 192.168.5.7 - - - user-not-found - - - -"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 35,
+    "description": "代码更新失败",
+    "messgae": "tom@PC-DEV-02 MINGW64 /c/code/order-system (main)\n$ git push --progress \"origin\" main:refs/for/main\nssh: connect to host selab port 29418: Connection refused\nfatal: Could not read from remote repository.\n用户ip：192.168.5.8\n用户名：tom\n仓库地址：xcode",
+    "root_case": "sshkey配置错误",
+    "logs": {
+      "sshd_log": [
+        "[2025-09-04T15:16:04.789+08:00] 4b7d2e9f [SSHD] tom - AUTH FAILURE FROM 192.168.5.8 - - - no-matching-key - - - -"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 36,
+    "description": "jenkins配置gerrit服务器认证失败",
+    "messgae": "Jenkins用户地址：192.168.5.3\n用户名：jenkins\n仓库名：xcode\njenkins配置gerrit服务器认证失败",
+    "root_case": "sshkey配置错误",
+    "logs": {
+      "sshd_log": [
+        "[2025-09-04T16:12:46.123+08:00] 3f8d2a9e [SSHD] jenkins - AUTH FAILURE FROM 192.168.5.3 - - - no-matching-key - - - -",
+        "[2025-09-04T16:12:45.678+08:00] 3f8d2a9e [SSHD] jenkins - AUTH FAILURE FROM 192.168.5.3 - - - no-matching-key - - - -"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [
+        "2025-09-04 16:12:45.789+0800 [id=1234] INFO hudson.plugins.gerrit.trigger.GerritServer#testConnection: Testing connection to Gerrit server at 192.168.5.2:29418\n2025-09-04 16:12:45.912+0800 [id=1234] SEVERE hudson.plugins.gerrit.trigger.GerritServer#testConnection: Failed to connect to Gerrit server: Permission denied (publickey).\ncom.jcraft.jsch.JSchException: Auth fail\n at com.jcraft.jsch.Session.connect(Session.java:558)\n at com.jcraft.jsch.Session.connect(Session.java:183)\n at hudson.plugins.gerrit.trigger.GerritServer.testConnection(GerritServer.java:456)\n at hudson.plugins.gerrit.trigger.config.IGerritHudsonTriggerConfig.testConnection(IGerritHudsonTriggerConfig.java:123)\n at hudson.plugins.gerrit.trigger.GerritTrigger.doTestConnection(GerritTrigger.java:789)"
+      ],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 37,
+    "description": "jenkins配置gerrit服务器认证失败",
+    "messgae": "Jenkins地址：192.168.5.3\n用户名：jenkins1\n仓库名：xcode",
+    "root_case": "用户名配置错误",
+    "logs": {
+      "sshd_log": [
+        "[2025-09-04T16:16:12.345+08:00] a4b7e9f2 [SSHD] jenkins1 - AUTH FAILURE FROM 192.168.5.3 - - - user-not-found - - - -",
+        "[2025-09-04T16:16:12.789+08:00] a4b7e9f2 [SSHD] jenkins1 - AUTH FAILURE FROM 192.168.5.3 - - - user-not-found - - - -",
+        "[2025-09-04T16:16:13.234+08:00] a4b7e9f2 [SSHD] jenkins1 - AUTH FAILURE FROM 192.168.5.3 - - - user-not-found - - - -"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [
+        "2025-09-04 16:16:12.312+0800 [id=567] INFO com.sonyericsson.hudson.plugins.gerrit.trigger.GerritServer#testConnection: Testing connection to Gerrit server 'Default' (host: 192.168.5.2, port: 29418, username: jenkins_wrong) ",
+        "2025-09-04 16:16:12.345+0800 [id=567] INFO com.jcraft.jsch.JSch#getSession: Attempting to get session for user 'jenkins_wrong' on host 192.168.5.2 ",
+        "2025-09-04 16:16:12.567+0800 [id=567] INFO com.jcraft.jsch.Session#connect: Connecting to 192.168.5.2 port 29418",
+        "2025-09-04 16:16:12.789+0800 [id=567] WARNING com.jcraft.jsch.Session#connect: Authentication failed for user 'jenkins_wrong'\ncom.jcraft.jsch.JSchException: Auth fail\n at com.jcraft.jsch.Session.connect(Session.java:558)\n at com.jcraft.jsch.Session.connect(Session.java:183)\n at com.sonyericsson.hudson.plugins.gerrit.trigger.hudsontrigger.GerritTriggerConnection.testConnection(GerritTriggerConnection.java:178)\n at com.sonyericsson.hudson.plugins.gerrit.trigger.GerritServer.testConnection(GerritServer.java:412)\n at com.sonyericsson.hudson.plugins.gerrit.trigger.PluginImpl.doTestConnection(PluginImpl.java:789)\n at java.lang.invoke.MethodHandle.invokeWithArguments(MethodHandle.java:627)\n at org.kohsuke.stapler.Function$MethodFunction.invoke(Function.java:396)\n at org.kohsuke.stapler.Function$InstanceFunction.invoke(Function.java:408)\n at org.kohsuke.stapler.Function.bindAndInvoke(Function.java:212)\n at org.kohsuke.stapler.Function.bindAndInvokeAndServeResponse(Function.java:145)\n at org.kohsuke.stapler.MetaClass$11.doDispatch(MetaClass.java:535)\n at org.kohsuke.stapler.NameBasedDispatcher.dispatch(NameBasedDispatcher.java:58)\n at org.kohsuke.stapler.Stapler.tryInvoke(Stapler.java:747)\n at org.kohsuke.stapler.Stapler.invoke(Stapler.java:878)\n at org.kohsuke.stapler.MetaClass$4.doDispatch(MetaClass.java:280)\n at org.kohsuke.stapler.NameBasedDispatcher.dispatch(NameBasedDispatcher.java:58)\n at org.kohsuke.stapler.Stapler.tryInvoke(Stapler.java:747)\n ... 42 more\nCaused by: com.jcraft.jsch.JSchException: Auth fail\n at com.jcraft.jsch.Session.connect(Session.java:525)\n at com.jcraft.jsch.Session.connect(Session.java:183)\n ... 56 more",
+        "2025-09-04 16:16:13.012+0800 [id=567] SEVERE com.sonyericsson.hudson.plugins.gerrit.trigger.GerritServer#testConnection: Failed to connect to Gerrit server 'Default'\ncom.jcraft.jsch.JSchException: Auth fail\n at com.jcraft.jsch.Session.connect(Session.java:558)\n ... (stack trace same as above)",
+        "2025-09-04 16:16:13.234+0800 [id=567] WARNING hudson.plugins.gerrit.GerritTrigger: Connection test to Gerrit server failed: Auth fail for user 'jenkins_wrong'. Please check the username in Gerrit Trigger configuration.",
+        "2025-09-04 16:16:13.456+0800 [id=567] INFO hudson.model.Descriptor#newInstancesFromHeteroList: Failed to instantiate credentials for Gerrit connection test\n"
+      ],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 38,
+    "description": "jenkins配置gerrit服务器认证失败",
+    "messgae": "jenkins配置gerrit服务器认证失败\n当前用户地址：192.168.5.3\n用户名：jenkins\n仓库名：gerrit-code",
+    "root_case": "gerrit服务器地址配置出错",
+    "logs": {
+      "sshd_log": [],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [
+        "2026-09-04 14:27:11.234+0800 [id=2345] INFO hudson.plugins.gerrit.trigger.GerritServer#testConnection: Testing connection to Gerrit server 'Default' (host: 192.168.5.55, port: 29418, username: jenkins)",
+        "2026-09-04 14:27:11.389+0800 [id=2345] INFO com.jcraft.jsch.JSch#getSession: Attempting to get session for user 'jenkins' on host 192.168.5.55",
+        "2026-09-04 14:27:11.512+0800 [id=2345] INFO com.jcraft.jsch.Session#connect: Connecting to 192.168.5.55 port 29418",
+        "2026-09-04 14:27:16.678+0800 [id=2345] SEVERE c.s.t.g.g.GerritConnection#connect: IOException:\njava.net.ConnectException: Connection refused\n at java.base/sun.nio.ch.Net.connect0(Native Method)\n at java.base/sun.nio.ch.Net.connect(Net.java:589)\n at java.base/sun.nio.ch.Net.connect(Net.java:578)\n at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:583)\n at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)\n at java.base/java.net.Socket.connect(Socket.java:757)\n at com.jcraft.jsch.Util.createSocket(Util.java:376)\nCaused: com.jcraft.jsch.JSchException\n at com.jcraft.jsch.Util.createSocket(Util.java:386)\n at com.jcraft.jsch.Session.connect(Session.java:230)\n ...\n at com.sonymobile.tools.gerrit.gerritevents.GerritConnection.connect(GerritConnection.java:498)\n at com.sonymobile.tools.gerrit.gerritevents.GerritConnection.run(GerritConnection.java:404)",
+        "2026-09-04 14:27:16.845+0800 [id=2345] SEVERE hudson.plugins.gerrit.trigger.GerritServer#testConnection: Failed to connect to Gerrit server: Connection refused",
+        "2026-09-04 14:27:16.912+0800 [id=2345] WARNING hudson.plugins.gerrit.GerritTrigger: Connection test to Gerrit server failed: Connection refused. Please check the host and port in Gerrit Trigger configuration."
+      ],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 39,
+    "description": "jenkins配置gerrit服务器认证失败",
+    "messgae": "Cannot connect to Gerrit: No SSH key configured or key file not found\nIP：192.168.5.3\n配置用户名：jenkins\n配置主机：192.168.5.2:29418\n项目：gerrit-code",
+    "root_case": "sshkey不存在",
+    "logs": {
+      "sshd_log": [],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [
+        "2025-09-04 16:30:05.234+0800 [id=1890] INFO hudson.plugins.gerrit.trigger.GerritServer#testConnection: Testing connection to Gerrit server 'Default' (host: 192.168.5.2, port: 29418, username: jenkins)",
+        "2025-09-04 16:30:05.389+0800 [id=1890] SEVERE hudson.plugins.gerrit.trigger.GerritServer#testConnection: Failed to connect to Gerrit server\ncom.sonyericsson.hudson.plugins.gerrit.trigger.GerritException: No SSH key configured or key file not found\n    at hudson.plugins.gerrit.trigger.config.GerritServerConfig.getIdentity Caused by: java.io.FileNotFoundException: /var/lib/jenkins/.ssh/id_rsa (No such file or directory)"
+      ],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 40,
+    "description": "jenkins配置gerrit服务器认证失败",
+    "messgae": "Auth fail\n用户ip：192.168.5.3",
+    "root_case": "gerrit用户未配置ssh公钥",
+    "logs": {
+      "sshd_log": [
+        "[2025-09-04T16:30:21.789+08:00] 4e5f7a9c [SSHD] jenkins - AUTH FAILURE FROM 192.168.5.3 - - - key-list-empty - - - -"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [
+        "2025-09-04 16:30:18.456+0800 [id=2011] INFO hudson.plugins.gerrit.trigger.GerritServer#testConnection: Testing connection to Gerrit server 'Default' (host: 192.168.5.2, port: 29418, username: jenkins)",
+        "2025-09-04 16:30:22.123+0800 [id=2011] WARNING com.jcraft.jsch.Session#connect: Authentication failed for user 'jenkins' com.jcraft.jsch.JSchException: Auth fail"
+      ],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 41,
+    "description": "代码拉取gerrit服务失败",
+    "messgae": "Auth fail\n用户ip：192.168.5.3",
+    "root_case": "sshkey配置错误",
+    "logs": {
+      "sshd_log": [
+        "[2025-09-04T16:35:30.912+08:00] 3b9d2e6f [SSHD] jenkins - AUTH FAILURE FROM 192.168.5.3 - - - no-matching-key - - - -"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [
+        "2025-09-04 16:35:28.567+0800 [id=2123] INFO hudson.plugins.gerrit.trigger.GerritServer#testConnection: Testing connection to Gerrit server 'Default' (host: 192.168.5.2, port: 29418, username: jenkins)",
+        "2025-09-04 16:35:31.234+0800 [id=2123] WARNING com.jcraft.jsch.Session#connect: Authentication failed for user 'jenkins'\ncom.jcraft.jsch.JSchException: Auth fail"
+      ],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 42,
+    "description": "代码拉取gerrit服务失败",
+    "messgae": "报错User jenkins has no capability to connect to Gerrit event stream.\nip192.168.5.3\n用户名：jenkins",
+    "root_case": "用户缺少stream event权限",
+    "logs": {
+      "sshd_log": [
+        "[2025-09-04T16:40:39.234+08:00] 8a1b3c5d [sshd-SshDaemon31a1d626-nio2-thread-12] jenkins a/1000002 LOGIN FROM 192.168.5.3",
+        "[2025-09-04T16:40:39.456+08:00] 8a1b3c5d [SSH gerrit stream-events (jenkins)] jenkins a/1000002 stream-events 1ms 3ms - - - - - - - - -",
+        "[2025-09-04T16:40:39.678+08:00] 8a1b3c5d [sshd-SshDaemon31a1d626-nio2-thread-13] jenkins a/1000002 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [
+        "2025-09-04 16:40:38.123+0800 [id=2234] INFO hudson.plugins.gerrit.trigger.GerritServer#testConnection: Testing connection to Gerrit server 'Default' (host: 192.168.5.2, port: 29418, username: jenkins)",
+        "2025-09-04 16:40:40.456+0800 [id=2234] INFO com.sonyericsson.hudson.plugins.gerrit.trigger.GerritConnection: Connected to Gerrit via SSH",
+        "2025-09-04 16:40:40.589+0800 [id=2234] SEVERE com.sonyericsson.hudson.plugins.gerrit.trigger.GerritConnection#connect: Failed to connect to Gerrit event stream\ncom.sonyericsson.hudson.plugins.gerrit.trigger.StreamEventsCapabilityException: User jenkins has no capability to connect to Gerrit event stream.",
+        "2025-09-04 16:40:40.712+0800 [id=2234] WARNING hudson.plugins.gerrit.GerritTrigger: Connection test to Gerrit server failed: User jenkins has no capability to connect to Gerrit event stream."
+      ],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 43,
+    "description": "代码拉取gerrit服务失败",
+    "messgae": "Auth fail for user 'jenkins1'\n服务器 IP：192.168.5.3\n配置中填写的用户名：jenkins1",
+    "root_case": "用户名配置错误",
+    "logs": {
+      "sshd_log": [
+        "[2025-09-04T16:45:12.347+08:00] 5d8e2f9a [SSHD] jenkins1 - AUTH FAILURE FROM 192.168.5.3 - - - user-not-found - - - -"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [
+        "2025-09-04 16:45:08.456+0800 [id=2678] INFO hudson.plugins.gerrit.trigger.GerritServer#testConnection: Testing connection to Gerrit server 'Default' (host: 192.168.5.2, port: 29418, username: jenkins_wrong)",
+        "2025-09-04 16:45:08.612+0800 [id=2678] INFO com.jcraft.jsch.JSch#getSession: Attempting to get session for user 'jenkins1' on host 192.168.5.2",
+        "2025-09-04 16:45:12.234+0800 [id=2678] WARNING com.jcraft.jsch.Session#connect: Authentication failed for user 'jenkins1'com.jcraft.jsch.JSchException: Auth fail",
+        "2025-09-04 16:45:12.523+0800 [id=2678] WARNING hudson.plugins.gerrit.GerritTrigger: Connection test to Gerrit server failed: Auth fail for user 'jenkins1'. Please check the username in Gerrit Trigger configuration."
+      ],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 44,
+    "description": "gerrit用户添加邮箱失败",
+    "messgae": "用户roselee再192.168.5.7用浏览器注册gerrit账号失败报错：SMTP serverrejected auth: 535 Error: authentication failed",
+    "root_case": "gerrit STMP服务器配置出错",
+    "logs": {
+      "sshd_log": [],
+      "httpd_log": [
+        "192.168.5.7 [HTTP-4567] roselee [2025-09-15T14:12:28.234+08:00] \"POST /settings/emails HTTP/1.1\" 500 1456 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\""
+      ],
+      "error_log": [
+        "[2025-09-15 14:12:34,567] ERROR com.google.gerrit.server.mail.SmtpMailer: Failed to send verification email to roselee@nuaa.edu.cn\njavax.mail.AuthenticationFailedException: 535 Error: authentication failed"
+      ],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 45,
+    "description": "gerrit用户添加邮箱失败",
+    "messgae": "用户bill在192.168.5.13用浏览器注册gerrit账号失败报错：SMTP serverrejected auth: 535 Error: authentication failed",
+    "root_case": "gerrit STMP服务器配置出错",
+    "logs": {
+      "sshd_log": [],
+      "httpd_log": [
+        "192.168.5.13 [HTTP-5678] bill [2025-09-15T15:46:55.234+08:00] \"POST /settings/emails HTTP/1.1\" 500 1489 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\""
+      ],
+      "error_log": [
+        "[2025-09-15 15:47:22,134] ERROR com.google.gerrit.server.mail.SmtpMailer: Failed to send verification email to 2924917638@qq.com\njavax.mail.AuthenticationFailedException: 535 Error: authentication failed"
+      ],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 46,
+    "description": "gerrit用户添加邮箱失败",
+    "messgae": "Server Error\nCould not connect to SMTP host: localhost, port: 465\nroselee\nIP：192.168.5.7",
+    "root_case": "STMP服务器连接失败",
+    "logs": {
+      "sshd_log": [],
+      "httpd_log": [
+        "192.168.5.7 [HTTP-7123] roselee [2025-09-15T14:21:38.123+08:00] \"POST /settings/emails HTTP/1.1\" 500 1324 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\""
+      ],
+      "error_log": [
+        "[2025-09-15 14:22:10,567] ERROR com.google.gerrit.server.mail.OutgoingMail: Sending email failed com.google.gerrit.server.mail.EmailException: Could not connect to SMTP host: smtp.example.com, port: 465; nested exception is: java.net.ConnectException: Connection refused"
+      ],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 47,
+    "description": "gerrit用户添加邮箱失败",
+    "messgae": "Server Error\nCould not connect to SMTP host: localhost, port: 465\n用户名bill\nIP：192.168.5.13",
+    "root_case": "STMP服务器连接失败",
+    "logs": {
+      "sshd_log": [],
+      "httpd_log": [
+        "192.168.5.13 [HTTP-8456] bill [2025-09-15T15:11:15.678+08:00] \"POST /settings/emails HTTP/1.1\" 500 1345 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\""
+      ],
+      "error_log": [
+        "[2025-09-15 15:11:55,123] ERROR com.google.gerrit.server.mail.OutgoingMail: Sending email failed com.google.gerrit.server.mail.EmailException: Could not connect to SMTP host: smtp.qq.com, port: 465; nested exception is: java.net.ConnectException: Connection refused"
+      ],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 48,
+    "description": "gerrit用户添加邮箱失败",
+    "messgae": "Server Error\nCould not connect to SMTP host: localhost, port: 465\n用户：administer\nIP：192.168.5.9",
+    "root_case": "STMP服务器连接失败",
+    "logs": {
+      "sshd_log": [],
+      "httpd_log": [
+        "192.168.5.9 [HTTP-9342] administer [2025-09-15T16:06:05.234+08:00] \"POST /settings/emails HTTP/1.1\" 500 1338 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\""
+      ],
+      "error_log": [
+        "[2025-09-15 16:06:48,789] ERROR com.google.gerrit.server.mail.OutgoingMail: Sending email failed com.google.gerrit.server.mail.EmailException: Could not connect to SMTP host: smtp.163.com, port: 465; nested exception is: java.net.ConnectException: Connection refused"
+      ],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 49,
+    "description": "编写代码请求gerrit仓库失败",
+    "messgae": "roselee请求gerrit仓库尝试通过 REST API 查询自己的开放变更\n执行：curl -s -L --user roselee:password \\\n  -H \"Accept: application/json\" \\\n  \"http://192.168.5.2:8081/a/changes/?q=owner:self+status:open\"\n失败 NotFound",
+    "root_case": "未开放REST API",
+    "logs": {
+      "sshd_log": [],
+      "httpd_log": [
+        "192.168.5.7 [HTTP-12345] roselee [2025-11-15T09:35:12.456+08:00] \"GET /a/changes/?q=owner:self+status:open HTTP/1.1\" 404 9 \"-\" \"curl/8.5.0\""
+      ],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 50,
+    "description": "编写代码请求gerrit仓库失败",
+    "messgae": "bill在用户ip:192.168.5.13 请求gerrit仓库 gerrit-code 尝试通过 REST API 查询自己的开放变更\n代码：url = \"http://192.168.5.2:8081/a/changes/\"\nheaders = {\"Content-Type\": \"application/json;charset=UTF-8\"}\nauth = (\"bill\", \"123\")\ndata = {\n    \"project\": \"gerrit-code\",\n    \"subject\": \"Test change via API\",\n    \"branch\": \"master\",\n    \"status\": \"NEW\"\n}\n失败 NotFound",
+    "root_case": "未开放REST API",
+    "logs": {
+      "sshd_log": [],
+      "httpd_log": [
+        "192.168.5.13 [HTTP-35678] bill [2025-11-15T14:18:55.123+08:00] \"POST /a/changes/ HTTP/1.1\" 404 9 \"-\" \"python-requests/2.31.0\""
+      ],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 51,
+    "description": "下载代码失败",
+    "messgae": "IP：192.168.5.8\n$ git clone ssh://tom@192.168.5.2:29418/gerrit-code\nCloning into 'gerrit-code'...\nremote: Enumerating objects: 12456789, done.\nremote: Counting objects: 100% (12456789/12456789), done.\nremote: Compressing objects: 100% (3456789/3456789), done.\nerror: RPC failed; curl 28 Operation timed out after 3000 milliseconds with 2147483647 bytes received\nfatal: the remote end hung up unexpectedly\nfatal: early EOF\nfatal: index-pack failed",
+    "root_case": "代码量过大且超时时间设置太短",
+    "logs": {
+      "sshd_log": [
+        "[2025-11-15T11:22:45.678+08:00] 9d4e1f6a [sshd-SshDaemon76b17a78-nio2-thread-22] tom a/1000003 LOGIN FROM 192.168.5.8",
+        "[2025-11-15T11:27:45.123+08:00] 9d4e1f6a [SSH git-upload-pack /gerrit-code (tom)] tom a/1000003 git-upload-pack./gerrit-code 2ms 300000ms timeout -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 0 - 300000ms 0ms 2147483647",
+        "[2025-11-15T11:27:46.234+08:00] 9d4e1f6a [sshd-SshDaemon76b17a78-nio2-thread-23] tom a/1000003 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 52,
+    "description": "下载代码失败",
+    "messgae": "用户：hyj\nIP：192.168.5.10\n$ git fetch --all --tags --prune\nremote: Enumerating objects: 9876543, done.\nremote: Counting objects: 100% (9876543/9876543), done.\nremote: Compressing objects:  89% (5678901/6345678)   \nerror: RPC failed; curl 28 Operation timed out after 600000 milliseconds with 4567890123 bytes received\nfatal: the remote end hung up unexpectedly\nfatal: early EOF\nfatal: index-pack failed",
+    "root_case": "代码量过大且超时时间设置太短",
+    "logs": {
+      "sshd_log": [
+        "[2025-11-15T13:05:30.456+08:00] 4a9e3f71 [sshd-SshDaemon76b17a78-nio2-thread-45] hyj a/1000004 LOGIN FROM 192.168.5.10",
+        "[2025-11-15T13:15:30.789+08:00] 4a9e3f71 [SSH git-upload-pack /gerrit-code (hyj)] hyj a/1000004 git-upload-pack./gerrit-code 3ms 600000ms timeout -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 0 - 600000ms 0ms 4567890123",
+        "[2025-11-15T13:15:31.012+08:00] 4a9e3f71 [sshd-SshDaemon76b17a78-nio2-thread-46] hyj a/1000004 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 53,
+    "description": "下载代码失败",
+    "messgae": "用户：jenkins\nIP：192.168.5.3\n$ git fetch --tags --force --progress --depth=1 origin +refs/heads/*:refs/remotes/origin/*\nerror: RPC failed; curl 28 Operation timed out after 180000 milliseconds with 987654321 bytes received\nfatal: the remote end hung up unexpectedly\nfatal: early EOF\nfatal: index-pack failed\nhudson.plugins.git.GitException: Command \"git fetch ...\" returned status code 128",
+    "root_case": "代码量过大且超时时间设置太短",
+    "logs": {
+      "sshd_log": [
+        "[2025-11-15T15:40:10.567+08:00] 1b8f4c5d [sshd-SshDaemon76b17a78-nio2-thread-67] jenkins a/1000005 LOGIN FROM 192.168.5.3",
+        "[2025-11-15T15:43:10.890+08:00] 1b8f4c5d [SSH git-upload-pack /gerrit-code (jenkins)] jenkins a/1000005 git-upload-pack./gerrit-code 1ms 180000ms timeout -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 0 - 180000ms 0ms 987654321",
+        "[2025-11-15T15:43:11.123+08:00] 1b8f4c5d [sshd-SshDaemon76b17a78-nio2-thread-68] jenkins a/1000005 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 54,
+    "description": "下载代码失败",
+    "messgae": "执行：git clone -b develop ssh://administer@192.168.5.2:29418/gerrit-code\n报错：Cloning into 'gerrit-code'...\nremote: Enumerating objects: 1234, done.\nremote: Counting objects: 100% (1234/1234), done.\nremote: Compressing objects: 100% (789/789), done.\nremote: Total 1234 (delta 456), reused 1234 (delta 456), pack-reused 0\nerror: Remote branch develop not found in upstream origin\nfatal: Remote branch develop not found in upstream origin\nfatal: Could not read from remote repository.\n\nPlease make sure you have the correct access rights\nand the repository exists.",
+    "root_case": "分支不存在",
+    "logs": {
+      "sshd_log": [
+        "[2025-11-15T09:15:22.134+08:00] 4b9e2f1d [sshd-SshDaemon76b17a78-nio2-thread-11] administer a/1000001 LOGIN FROM 192.168.5.9",
+        "[2025-11-15T09:15:45.890+08:00] 4b9e2f1d [SSH git-upload-pack /gerrit-code (administer)] administer a/1000001 git-upload-pack./gerrit-code 1ms 12ms - 0 git/2.39.2 45ms 30ms 0",
+        "[2025-11-15T09:15:46.123+08:00] 4b9e2f1d [sshd-SshDaemon76b17a78-nio2-thread-12] administer a/1000001 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 55,
+    "description": "下载代码失败",
+    "messgae": "执行：git clone -b develop ssh://jenkins@192.168.5.2:29418/gerrit-code\n报错：Cloning into 'gerrit-code'...\nremote: Enumerating objects: 1234, done.\nremote: Counting objects: 100% (1234/1234), done.\nremote: Compressing objects: 100% (789/789), done.\nremote: Total 1234 (delta 456), reused 1234 (delta 456), pack-reused 0\nerror: Remote branch develop not found in upstream origin\nfatal: Remote branch develop not found in upstream origin\nfatal: Could not read from remote repository.\n\nPlease make sure you have the correct access rights\nand the repository exists.",
+    "root_case": "分支不存在",
+    "logs": {
+      "sshd_log": [
+        "[2025-11-15T17:05:20.456+08:00] 2c3d4e5f [sshd-SshDaemon76b17a78-nio2-thread-62] jenkins a/1000002 LOGIN FROM 192.168.5.3",
+        "[2025-11-15T17:05:55.789+08:00] 2c3d4e5f [SSH git-upload-pack /gerrit-code (jenkins)] jenkins a/1000002 git-upload-pack./gerrit-code 1ms 11ms - 0 git/2.39.5 42ms 28ms 0",
+        "[2025-11-15T17:05:56.012+08:00] 2c3d4e5f [sshd-SshDaemon76b17a78-nio2-thread-63] jenkins a/1000002 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 56,
+    "description": "下载代码失败",
+    "messgae": "执行：\ngit fetch origin develop:refs/remotes/origin/develop\nFrom ssh://192.168.5.2:29418/gerrit-code\n * [new ref]         develop    -> refs/remotes/origin/develop\nerror: couldn't find remote ref develop\nfatal: couldn't find remote ref develop\n用户名：bill\n用户ip：192.168.5.13",
+    "root_case": "分支不存在",
+    "logs": {
+      "sshd_log": [
+        "[2025-11-15T16:38:10.234+08:00] 5e6f7a8b [sshd-SshDaemon76b17a78-nio2-thread-37] bill a/1000005 LOGIN FROM 192.168.5.13",
+        "[2025-11-15T16:38:42.567+08:00] 5e6f7a8b [SSH git-upload-pack /gerrit-code (bill)] bill a/1000005 git-upload-pack./gerrit-code 1ms 9ms - 0 git/2.38.1 31ms 19ms 0",
+        "[2025-11-15T16:38:42.789+08:00] 5e6f7a8b [sshd-SshDaemon76b17a78-nio2-thread-38] bill a/1000005 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 57,
+    "description": "用户下载代码失败",
+    "messgae": "执行：git clone ssh://tom@192.168.5.2:29418/test-code报错：\nCloning into 'test-code'...\nremote: Counting objects: 0, done.\nremote: Compressing objects: 0% (0/0)   \nremote: error: access denied or repository not exported: test-code\nfatal: Could not read from remote repository.\n\nPlease make sure you have the correct access rights\nand the repository exists.\n用户：tom\nIP：192.168.5.8",
+    "root_case": "用户组无权限",
+    "logs": {
+      "sshd_log": [
+        "[2025-11-15T16:25:10.456+08:00] 3f8a9b2c [sshd-SshDaemon76b17a78-nio2-thread-18] tom a/1000003 LOGIN FROM 192.168.5.8",
+        "[2025-11-15T16:25:28.789+08:00] 3f8a9b2c [SSH git-upload-pack /test-code (tom)] tom a/1000003 git-upload-pack./test-code 1ms 5ms - 0 git/2.39.3 18ms 10ms 0",
+        "[2025-11-15T16:25:29.012+08:00] 3f8a9b2c [sshd-SshDaemon76b17a78-nio2-thread-19] tom a/1000003 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 58,
+    "description": "用户下载代码失败",
+    "messgae": "执行：git clone ssh://hyj@192.168.5.2:29418/test-code\nCloning into 'test-code'...\nremote: error: access denied or repository not exported: test-code\nfatal: Could not read from remote repository.\n\nPlease make sure you have the correct access rights\nand the repository exists.",
+    "root_case": "用户组无权限",
+    "logs": {
+      "sshd_log": [
+        "[2025-11-15T16:55:40.123+08:00] 6d4e5f7a [sshd-SshDaemon76b17a78-nio2-thread-34] hyj a/1000006 LOGIN FROM 192.168.5.10",
+        "[2025-11-15T16:56:05.456+08:00] 6d4e5f7a [SSH git-upload-pack /test-code (hyj)] hyj a/1000006 git-upload-pack./test-code 1ms 6ms - 0 git/2.37.0 22ms 12ms 0",
+        "[2025-11-15T16:56:05.678+08:00] 6d4e5f7a [sshd-SshDaemon76b17a78-nio2-thread-35] hyj a/1000006 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 59,
+    "description": "jenkins下载代码失败",
+    "messgae": "sh 'git clone ssh://jenkins@192.168.5.2:29418/test-code'\n+ git clone ssh://jenkins@192.168.5.2:29418/test-code\nCloning into 'test-code'...\nremote: error: access denied or repository not exported: test-code\nfatal: Could not read from remote repository.\nip为192.168.5.3 \ngerrit用户名为：jenkins",
+    "root_case": "配置的gerrit用户jenkins无权限",
+    "logs": {
+      "sshd_log": [
+        "[2025-11-15T17:20:15.234+08:00] 8c2b1d4e [sshd-SshDaemon76b17a78-nio2-thread-58] jenkins a/1000002 LOGIN FROM 192.168.5.3",
+        "[2025-11-15T17:20:40.789+08:00] 8c2b1d4e [sshd-SshDaemon76b17a78-nio2-thread-59] jenkins a/1000002 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 60,
+    "description": "用户提交代码失败",
+    "messgae": "用户名：tom\nIP：192.168.5.8\n执行：git push origin HEAD:refs/for/master\nEnumerating objects: 5, done.\nCounting objects: 100% (5/5), done.\nDelta compression using up to 8 threads\nCompressing objects: 100% (3/3), done.\nWriting objects: 100% (3/3), 1.23 KiB | 1.23 MiB/s, done.\nTotal 3 (delta 1), reused 0 (delta 0), pack-reused 0\nremote: error: access denied or repository not exported: test-code\nremote: fatal: Could not read from remote repository.\nTo ssh://tom@192.168.5.2:29418/test-code\n ! [remote rejected] HEAD -> refs/for/master (access denied or repository not exported)\nerror: failed to push some refs to 'ssh://tom@192.168.5.2:29418/test-code'\n",
+    "root_case": "用户组无权限",
+    "logs": {
+      "sshd_log": [
+        "[2025-11-15T16:45:20.345+08:00] 7c9d4e2f [sshd-SshDaemon76b17a78-nio2-thread-27] tom a/1000003 LOGIN FROM 192.168.5.8",
+        "[2025-11-15T16:45:35.678+08:00] 7c9d4e2f [SSH git-receive-pack /test-code (tom)] tom a/1000003 git-receive-pack./test-code 1ms 6ms - 0 git/2.39.3 22ms 14ms 0",
+        "[2025-11-15T16:45:35.901+08:00] 7c9d4e2f [sshd-SshDaemon76b17a78-nio2-thread-28] tom a/1000003 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 61,
+    "description": "用户提交代码失败",
+    "messgae": "用户：hyj\nIP：192.168.5.10\n推送变更git push origin feature/new-task:refs/for/feature/new-task\nEnumerating objects: 8, done.\nCounting objects: 100% (8/8), done.\nDelta compression using up to 8 threads\nCompressing objects: 100% (5/5), done.\nWriting objects: 100% (6/6), 2.45 KiB | 2.45 MiB/s, done.\nTotal 6 (delta 2), reused 0 (delta 0), pack-reused 0\nremote: error: access denied or repository not exported: test-code\nremote: fatal: Could not read from remote repository.\nTo ssh://hyj@192.168.5.2:29418/test-code\n ! [remote rejected] feature/new-task -> refs/for/feature/new-task (access denied or repository not exported)\nerror: failed to push some refs to 'ssh://hyj@192.168.5.2:29418/test-code'",
+    "root_case": "用户组无权限",
+    "logs": {
+      "sshd_log": [
+        "[2025-11-15T17:10:55.123+08:00] 4a1b5c6d [sshd-SshDaemon76b17a78-nio2-thread-41] hyj a/1000006 LOGIN FROM 192.168.5.10",
+        "[2025-11-15T17:11:18.456+08:00] 4a1b5c6d [SSH git-receive-pack /test-code (hyj)] hyj a/1000006 git-receive-pack./test-code 1ms 7ms - 0 git/2.37.0 26ms 16ms 0",
+        "[2025-11-15T17:11:18.678+08:00] 4a1b5c6d [sshd-SshDaemon76b17a78-nio2-thread-42] hyj a/1000006 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 62,
+    "description": "用户评审变更失败",
+    "messgae": "用户：administer\nIP：192.168.5.9\n执行：ssh -p 29418 administer@192.168.5.2 gerrit review 12345 --message \"Looks good to me\" --label Code-Review+2\nerror: project \"test-code\": not permitted to upload code review labels\nfatal: one or more reviews failed; see output above",
+    "root_case": "用户组无权限",
+    "logs": {
+      "sshd_log": [
+        "[2025-11-15T18:05:12.345+08:00] 1d3e5f7g [sshd-SshDaemon76b17a78-nio2-thread-81] administer a/1000001 LOGIN FROM 192.168.5.9",
+        "[2025-11-15T18:05:28.678+08:00] 1d3e5f7g [SSH gerrit review 12345 (administer)] administer a/1000001 gerrit review 12345 --message \"111\" --label Code-Review+2 1ms 6ms - - - - - - - - -",
+        "[2025-11-15T18:05:28.901+08:00] 1d3e5f7g [sshd-SshDaemon76b17a78-nio2-thread-82] administer a/1000001 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 63,
+    "description": "用户评审变更失败",
+    "messgae": "用户：bill\nIP：192.168.5.13\nssh -p 29418 bill@192.168.5.2 gerrit review 12456 --label Code-Review+1 --message \"Verified\"\nerror: project \"test-code\": not permitted to use label \"Code-Review\"\nfatal: one or more reviews failed; see output above",
+    "root_case": "用户组无权限",
+    "logs": {
+      "sshd_log": [
+        "[2025-11-15T18:35:40.234+08:00] 8h2k4m6n [sshd-SshDaemon76b17a78-nio2-thread-95] bill a/1000005 LOGIN FROM 192.168.5.13",
+        "[2025-11-15T18:35:58.567+08:00] 8h2k4m6n [SSH gerrit review 12456 (bill)] bill a/1000005 gerrit review 12456 --label Code-Review+1 --message \"Verified\" 1ms 7ms - - - - - - - - -",
+        "[2025-11-15T18:35:58.789+08:00] 8h2k4m6n [sshd-SshDaemon76b17a78-nio2-thread-96] bill a/1000005 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 64,
+    "description": "用户评审变更失败",
+    "messgae": "用户：roselee\nIP：192.168.5.7\n执行：ssh -p 29418 roselee@192.168.5.2 gerrit review 12345 --message \"Looks good to me\" --label Code-Review+2\nerror: project \"test-code\": not permitted to upload code review labels\nfatal: one or more reviews failed; see output above",
+    "root_case": "用户组无权限",
+    "logs": {
+      "sshd_log": [
+        "[2025-11-15T19:10:25.456+08:00] 3p5q7r9s [sshd-SshDaemon76b17a78-nio2-thread-112] roselee a/1000000 LOGIN FROM 192.168.5.7",
+        "[2025-11-15T19:10:45.789+08:00] 3p5q7r9s [SSH gerrit review 12567 (roselee)] roselee a/1000001 gerrit review 12345 --message \"111\" --label Code-Review+2 1ms 6ms - - - - - - - - -",
+        "[2025-11-15T19:10:46.012+08:00] 3p5q7r9s [sshd-SshDaemon76b17a78-nio2-thread-113] roselee a/1000000 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 65,
+    "description": "使用ssh命令创建分支失败",
+    "messgae": "用户：bill\nIP：192.168.5.13\n执行：ssh -p 29418 bill@192.168.5.2 gerrit create-branch gerrit-code refs/heads/release/2025.12 master\n报错：fatal: not permitted: create branch refs/heads/release/2025.12 in project gerrit-code",
+    "root_case": "用户无权限",
+    "logs": {
+      "sshd_log": [
+        "[2025-12-12T09:18:15.784+08:00] d7571563 [sshd-SshDaemon[36d2c206](port=29418)-nio2-thread-39] bill a/1000440 SSH_REQUEST \"gerrit create-branch gerrit-code refs/heads/release/2025.12 master\" FROM 192.168.5.13",
+        "[2025-12-12T09:18:16.217+08:00] d7571563 [sshd-SshDaemon[36d2c206](port=29418)-nio2-thread-39] bill a/1000440 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [
+        "[2025-12-12T09:18:16.022+08:00] [sshd-SshCommand-30] WARN  com.google.gerrit.sshd.commands.CreateBranchCommand : create branch request rejected for user bill on project gerrit-code, ref refs/heads/release/2025.12: not permitted"
+      ],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 66,
+    "description": "使用ssh命令删除分支失败",
+    "messgae": "用户：hyj\nIP：192.168.5.10\n执行：ssh -p 29418 hyj@192.168.5.2 gerrit delete-branch gerrit-code refs/heads/feature/obsolete-api\n报错：fatal: not permitted: delete branch refs/heads/feature/obsolete-api in project gerrit-code",
+    "root_case": "用户无权限",
+    "logs": {
+      "sshd_log": [
+        "[2025-12-12T09:25:10.831+08:00] 55214917 [sshd-SshDaemon[32c5f274](port=29418)-nio2-thread-34] hyj a/1002496 SSH_REQUEST \"gerrit delete-branch gerrit-code refs/heads/feature/obsolete-api\" FROM 192.168.5.10",
+        "[2025-12-12T09:25:11.094+08:00] 55214917 [sshd-SshDaemon[32c5f274](port=29418)-nio2-thread-34] hyj a/1002496 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [
+        "[2025-12-12T09:25:10.982+08:00] [sshd-SshCommand-19] WARN  com.google.gerrit.sshd.commands.DeleteBranchCommand : delete branch request rejected for user hyj on project gerrit-code, ref refs/heads/feature/obsolete-api: not permitted"
+      ],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 67,
+    "description": "遗弃变更失败",
+    "messgae": "用户：jenkins1\nIP：192.168.5.3\n执行：ssh -p 29418 jenkins1@192.168.5.2 gerrit review 18234,1 --abandon\n报错：fatal: not permitted to abandon change 18234",
+    "root_case": "用户无权限",
+    "logs": {
+      "sshd_log": [
+        "[2025-12-12T09:32:39.511+08:00] 4f121807 [sshd-SshDaemon[63b63bb2](port=29418)-nio2-thread-15] jenkins1 a/1007122 SSH_REQUEST \"gerrit review 18234,1 --abandon\" FROM 192.168.5.3",
+        "[2025-12-12T09:32:40.464+08:00] 4f121807 [sshd-SshDaemon[63b63bb2](port=29418)-nio2-thread-15] jenkins1 a/1007122 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [
+        "[2025-12-12T09:32:39.758+08:00] [sshd-SshCommand-19] WARN  com.google.gerrit.server.restapi.change.Abandon : abandon rejected for change 18234 by user jenkins1: not permitted"
+      ],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 68,
+    "description": "恢复变更失败",
+    "messgae": "用户：tom\nIP：192.168.5.8\n执行：ssh -p 29418 tom@192.168.5.2 gerrit review 18235,1 --restore\n报错：fatal: not permitted to restore change 18235",
+    "root_case": "用户无权限",
+    "logs": {
+      "sshd_log": [
+        "[2025-12-12T09:39:17.135+08:00] d647a829 [sshd-SshDaemon[1659d67e](port=29418)-nio2-thread-28] tom a/1003286 SSH_REQUEST \"gerrit review 18235,1 --restore\" FROM 192.168.5.8",
+        "[2025-12-12T09:39:18.065+08:00] d647a829 [sshd-SshDaemon[1659d67e](port=29418)-nio2-thread-28] tom a/1003286 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [
+        "[2025-12-12T09:39:17.394+08:00] [sshd-SshCommand-22] WARN  com.google.gerrit.server.restapi.change.Restore : restore rejected for change 18235 by user tom: not permitted"
+      ],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 69,
+    "description": "下载代码失败",
+    "messgae": "用户：bill\nIP：192.168.5.13\n执行：git clone \"ssh://bill@192.168.5.2:29418/missing-demo-project\"\nCloning into 'missing-demo-project'...\nremote: fatal: project or repository 'missing-demo-project' does not exist\nfatal: Could not read from remote repository.",
+    "root_case": "项目不存在",
+    "logs": {
+      "sshd_log": [
+        "[2025-12-12T09:46:24.507+08:00] 11205c0f [sshd-SshDaemon[1f5c915c](port=29418)-nio2-thread-19] bill a/1002124 git-upload-pack /missing-demo-project FROM 192.168.5.13",
+        "[2025-12-12T09:46:25.327+08:00] 11205c0f [sshd-SshDaemon[1f5c915c](port=29418)-nio2-thread-19] bill a/1002124 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [
+        "[2025-12-12T09:46:24.717+08:00] [SSH git-upload-pack /missing-demo-project (bill)] ERROR com.google.gerrit.server.project.ProjectCacheImpl : project 'missing-demo-project' not found for user bill during upload-pack request"
+      ],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 70,
+    "description": "提交代码失败",
+    "messgae": "用户：roselee\nIP：192.168.5.7\n执行：git push origin HEAD:refs/for/release/not-exist\nremote: error: branch refs/heads/release/not-exist not found\nTo ssh://192.168.5.2:29418/gerrit-code\n ! [remote rejected] HEAD -> refs/for/release/not-exist (branch not found)\nerror: failed to push some refs to 'ssh://192.168.5.2:29418/gerrit-code'",
+    "root_case": "目标分支不存在",
+    "logs": {
+      "sshd_log": [
+        "[2025-12-12T09:53:34.061+08:00] 410a0285 [sshd-SshDaemon[311f42ae](port=29418)-nio2-thread-12] roselee a/1007242 git-receive-pack /gerrit-code FROM 192.168.5.7",
+        "[2025-12-12T09:53:34.924+08:00] 410a0285 [sshd-SshDaemon[311f42ae](port=29418)-nio2-thread-12] roselee a/1007242 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [
+        "[2025-12-12T09:53:34.321+08:00] [ReceiveCommits-3[receive-commits]-for-SSH git-receive-pack /gerrit-code (roselee)] ERROR com.google.gerrit.server.git.receive.ReceiveCommits : branch refs/heads/release/not-exist not found in project gerrit-code for push by roselee"
+      ],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 71,
+    "description": "创建仓库失败",
+    "messgae": "用户：administer\nIP：192.168.5.9\n执行：ssh -p 29418 administer@192.168.5.2 gerrit create-project demo-team/new-service --empty-commit\n报错：fatal: not permitted: create project demo-team/new-service",
+    "root_case": "用户无权限",
+    "logs": {
+      "sshd_log": [
+        "[2025-12-12T10:00:21.915+08:00] 83145697 [sshd-SshDaemon[3b5f8dab](port=29418)-nio2-thread-12] administer a/1009969 SSH_REQUEST \"gerrit create-project demo-team/new-service --empty-commit\" FROM 192.168.5.9",
+        "[2025-12-12T10:00:22.390+08:00] 83145697 [sshd-SshDaemon[3b5f8dab](port=29418)-nio2-thread-12] administer a/1009969 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [
+        "[2025-12-12T10:00:22.034+08:00] [sshd-SshCommand-41] WARN  com.google.gerrit.server.project.ProjectCreator : create project request rejected for user administer: not permitted"
+      ],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 72,
+    "description": "提交代码失败",
+    "messgae": "用户：roselee\nIP：192.168.5.7\n执行：git push origin master:master\nremote: ERROR: Instructed to push to a branch, but change is not allowed to push directly to this branch.\nTo ssh://192.168.5.2:29418/gerrit-code\n ! [remote rejected] master -> master (prohibited by Gerrit: direct push to branch)\nerror: failed to push some refs to 'ssh://192.168.5.2:29418/gerrit-code'",
+    "root_case": "推送到错误分支",
+    "logs": {
+      "sshd_log": [
+        "[2025-12-12T10:07:41.789+08:00] 45c9f8a8 [sshd-SshDaemon[5313fa1a](port=29418)-nio2-thread-27] roselee a/1001089 git-receive-pack /gerrit-code FROM 192.168.5.7",
+        "[2025-12-12T10:07:42.463+08:00] 45c9f8a8 [sshd-SshDaemon[5313fa1a](port=29418)-nio2-thread-27] roselee a/1001089 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [
+        "[2025-12-12T10:07:42.120+08:00] [ReceiveCommits-2[receive-commits]-for-SSH git-receive-pack /gerrit-code (roselee)] ERROR com.google.gerrit.server.git.receive.ReceiveCommits : direct push rejected for roselee to refs/heads/master in project gerrit-code; use refs/for/master"
+      ],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 73,
+    "description": "提交代码失败",
+    "messgae": "用户：hyj\nIP：192.168.5.10\n执行：git push origin HEAD:refs/for/master\nremote: ERROR: Commit has 1542 lines of code, which exceeds the limit of 1000 lines.\nTo ssh://192.168.5.2:29418/gerrit-code\n ! [remote rejected] HEAD -> refs/for/master (commit size limit exceeded)\nerror: failed to push some refs to 'ssh://192.168.5.2:29418/gerrit-code'",
+    "root_case": "单次提交代码量过大超出限制",
+    "logs": {
+      "sshd_log": [
+        "[2025-12-12T10:14:15.849+08:00] 5ee6aa66 [sshd-SshDaemon[b88bef87](port=29418)-nio2-thread-26] hyj a/1001288 git-receive-pack /gerrit-code FROM 192.168.5.10",
+        "[2025-12-12T10:14:16.677+08:00] 5ee6aa66 [sshd-SshDaemon[b88bef87](port=29418)-nio2-thread-26] hyj a/1001288 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [
+        "[2025-12-12T10:14:16.036+08:00] [ReceiveCommits-5[receive-commits]-for-SSH git-receive-pack /gerrit-code (hyj)] ERROR com.google.gerrit.server.git.validators.CommitValidators : commit rejected for user hyj on project gerrit-code: 1542 lines exceeds max allowed 1000"
+      ],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 74,
+    "description": "提交代码失败",
+    "messgae": "用户：tom\nIP：192.168.5.8\n执行：git push origin HEAD:refs/for/master\nremote: ERROR: Your change is based on an old version of the target branch. Please rebase and try again.\nTo ssh://192.168.5.2:29418/gerrit-code\n ! [remote rejected] HEAD -> refs/for/master (stale revision)\nerror: failed to push some refs to 'ssh://192.168.5.2:29418/gerrit-code'",
+    "root_case": "本地分支未同步远程目标分支的最新代码",
+    "logs": {
+      "sshd_log": [
+        "[2025-12-12T10:21:44.620+08:00] fbe5b43b [sshd-SshDaemon[e59d81fa](port=29418)-nio2-thread-22] tom a/1006109 git-receive-pack /gerrit-code FROM 192.168.5.8",
+        "[2025-12-12T10:21:45.124+08:00] fbe5b43b [sshd-SshDaemon[e59d81fa](port=29418)-nio2-thread-22] tom a/1006109 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [
+        "[2025-12-12T10:21:44.831+08:00] [ReceiveCommits-1[receive-commits]-for-SSH git-receive-pack /gerrit-code (tom)] ERROR com.google.gerrit.server.git.receive.ReceiveCommits : push rejected for user tom: change is based on stale revision of refs/heads/master; rebase required"
+      ],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 75,
+    "description": "提交代码失败",
+    "messgae": "用户：jenkins\nIP：192.168.5.3\n执行：git push origin HEAD:refs/for/master\nno change",
+    "root_case": "提交的代码没有任何变化",
+    "logs": {
+      "sshd_log": [
+        "[2025-12-12T10:28:43.882+08:00] 61d2bdcd [sshd-SshDaemon[c9dc0100](port=29418)-nio2-thread-26] jenkins a/1009547 git-receive-pack /gerrit-code FROM 192.168.5.3",
+        "[2025-12-12T10:28:44.479+08:00] 61d2bdcd [sshd-SshDaemon[c9dc0100](port=29418)-nio2-thread-26] jenkins a/1009547 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [
+        "[2025-12-12T10:28:44.004+08:00] [ReceiveCommits-5[receive-commits]-for-SSH git-receive-pack /gerrit-code (jenkins)] INFO  com.google.gerrit.server.git.receive.ReceiveCommits : no new changes for user jenkins on project gerrit-code, branch master"
+      ],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 76,
+    "description": "提交代码失败",
+    "messgae": "用户：bill\nIP：192.168.5.13\n执行：git push origin HEAD:refs/for/master\nno change",
+    "root_case": "提交的代码没有任何变化",
+    "logs": {
+      "sshd_log": [
+        "[2025-12-12T10:35:14.023+08:00] 53fa2c36 [sshd-SshDaemon[934ffc82](port=29418)-nio2-thread-21] bill a/1007861 git-receive-pack /gerrit-code FROM 192.168.5.13",
+        "[2025-12-12T10:35:14.642+08:00] 53fa2c36 [sshd-SshDaemon[934ffc82](port=29418)-nio2-thread-21] bill a/1007861 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [
+        "[2025-12-12T10:35:14.304+08:00] [ReceiveCommits-1[receive-commits]-for-SSH git-receive-pack /gerrit-code (bill)] INFO  com.google.gerrit.server.git.receive.ReceiveCommits : no new changes for user bill on project gerrit-code, branch master"
+      ],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 77,
+    "description": "提交代码失败",
+    "messgae": "用户：roselee\nIP：192.168.5.7\n执行：git push origin HEAD:refs/for/master\nremote: ERROR: commit message does not match the required format: <type>: <subject>\nTo ssh://192.168.5.2:29418/gerrit-code\n ! [remote rejected] HEAD -> refs/for/master (commit message validation failed)\nerror: failed to push some refs to 'ssh://192.168.5.2:29418/gerrit-code'",
+    "root_case": "commit格式不规范",
+    "logs": {
+      "sshd_log": [
+        "[2025-12-12T10:42:13.743+08:00] 2a6739c8 [sshd-SshDaemon[d64bb468](port=29418)-nio2-thread-27] roselee a/1009430 git-receive-pack /gerrit-code FROM 192.168.5.7",
+        "[2025-12-12T10:42:14.274+08:00] 2a6739c8 [sshd-SshDaemon[d64bb468](port=29418)-nio2-thread-27] roselee a/1009430 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [
+        "[2025-12-12T10:42:14.087+08:00] [ReceiveCommits-3[receive-commits]-for-SSH git-receive-pack /gerrit-code (roselee)] ERROR com.google.gerrit.server.git.validators.CommitMessageValidator : invalid commit message for user roselee; subject does not match required pattern '<type>: <subject>'"
+      ],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 78,
+    "description": "提交代码失败",
+    "messgae": "用户：administer\nIP：192.168.5.9\n执行：git push origin HEAD:refs/for/master\nremote: ERROR: commit message does not match the required format: <type>: <subject>\nTo ssh://192.168.5.2:29418/gerrit-code\n ! [remote rejected] HEAD -> refs/for/master (commit message validation failed)\nerror: failed to push some refs to 'ssh://192.168.5.2:29418/gerrit-code'",
+    "root_case": "commit格式不规范",
+    "logs": {
+      "sshd_log": [
+        "[2025-12-12T10:49:14.199+08:00] 18063979 [sshd-SshDaemon[7923090b](port=29418)-nio2-thread-37] administer a/1002027 git-receive-pack /gerrit-code FROM 192.168.5.9",
+        "[2025-12-12T10:49:14.951+08:00] 18063979 [sshd-SshDaemon[7923090b](port=29418)-nio2-thread-37] administer a/1002027 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [
+        "[2025-12-12T10:49:14.477+08:00] [ReceiveCommits-5[receive-commits]-for-SSH git-receive-pack /gerrit-code (administer)] ERROR com.google.gerrit.server.git.validators.CommitMessageValidator : invalid commit message for user administer; subject does not match required pattern '<type>: <subject>'"
+      ],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 79,
+    "description": "提交代码失败",
+    "messgae": "用户：tom\nIP：192.168.5.8\n执行：git push origin HEAD:refs/for/master\nremote: ERROR: missing Change-Id in commit message footer\nremote: Hint: to automatically insert a Change-Id, install the commit-msg hook from Gerrit.\nTo ssh://192.168.5.2:29418/gerrit-code\n ! [remote rejected] HEAD -> refs/for/master (missing Change-Id)\nerror: failed to push some refs to 'ssh://192.168.5.2:29418/gerrit-code'",
+    "root_case": "缺少change-id",
+    "logs": {
+      "sshd_log": [
+        "[2025-12-12T10:56:38.510+08:00] f1f0c761 [sshd-SshDaemon[49d993e1](port=29418)-nio2-thread-35] tom a/1005806 git-receive-pack /gerrit-code FROM 192.168.5.8",
+        "[2025-12-12T10:56:39.058+08:00] f1f0c761 [sshd-SshDaemon[49d993e1](port=29418)-nio2-thread-35] tom a/1005806 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [
+        "[2025-12-12T10:56:38.730+08:00] [ReceiveCommits-2[receive-commits]-for-SSH git-receive-pack /gerrit-code (tom)] ERROR com.google.gerrit.server.git.receive.ReceiveCommits : missing Change-Id in commit message footer for push by user tom"
+      ],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 80,
+    "description": "提交代码失败",
+    "messgae": "用户：hyj\nIP：192.168.5.10\n执行：git push origin HEAD:refs/for/master\nremote: ERROR: missing Change-Id in commit message footer\nremote: Hint: to automatically insert a Change-Id, install the commit-msg hook from Gerrit.\nTo ssh://192.168.5.2:29418/gerrit-code\n ! [remote rejected] HEAD -> refs/for/master (missing Change-Id)\nerror: failed to push some refs to 'ssh://192.168.5.2:29418/gerrit-code'",
+    "root_case": "缺少change-id",
+    "logs": {
+      "sshd_log": [
+        "[2025-12-12T11:03:13.419+08:00] 180606d5 [sshd-SshDaemon[ead3955a](port=29418)-nio2-thread-15] hyj a/1006294 git-receive-pack /gerrit-code FROM 192.168.5.10",
+        "[2025-12-12T11:03:14.157+08:00] 180606d5 [sshd-SshDaemon[ead3955a](port=29418)-nio2-thread-15] hyj a/1006294 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [
+        "[2025-12-12T11:03:13.684+08:00] [ReceiveCommits-6[receive-commits]-for-SSH git-receive-pack /gerrit-code (hyj)] ERROR com.google.gerrit.server.git.receive.ReceiveCommits : missing Change-Id in commit message footer for push by user hyj"
+      ],
+      "events_log": [],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 81,
+    "description": "提交代码失败",
+    "messgae": "用户：roselee\nIP：192.168.5.7\n执行：git push origin HEAD:refs/for/master\nremote: ERROR: change 21984 closed\nTo ssh://192.168.5.2:29418/gerrit-code\n ! [remote rejected] HEAD -> refs/for/master (change 21984 closed)\nerror: failed to push some refs to 'ssh://192.168.5.2:29418/gerrit-code'",
+    "root_case": "对应变更集已关闭",
+    "logs": {
+      "sshd_log": [
+        "[2025-12-12T11:10:16.276+08:00] b916d6d4 [sshd-SshDaemon[984d8606](port=29418)-nio2-thread-16] roselee a/1002149 git-receive-pack /gerrit-code FROM 192.168.5.7",
+        "[2025-12-12T11:10:17.130+08:00] b916d6d4 [sshd-SshDaemon[984d8606](port=29418)-nio2-thread-16] roselee a/1002149 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [
+        "[2025-12-12T11:10:16.429+08:00] [ReceiveCommits-4[receive-commits]-for-SSH git-receive-pack /gerrit-code (roselee)] ERROR com.google.gerrit.server.git.receive.ReceiveCommits : change 21984 is closed; cannot add patch set for user roselee"
+      ],
+      "events_log": [
+        "[2025-12-12 09:05:16,276] event received type:change-merged---->json:{\"submitter\":{\"email\":\"roselee@nuaa.edu.cn\",\"username\":\"roselee\"},\"change\":{\"project\":\"gerrit-code\",\"branch\":\"master\",\"id\":\"Ib97371acb238760ae4d69e7d217512e9cd26a471\",\"number\":21984,\"subject\":\"fix: close outdated review\",\"owner\":{\"email\":\"roselee@nuaa.edu.cn\",\"username\":\"roselee\"},\"url\":\"http://192.168.5.2:8081/c/gerrit-code/+/21984\",\"status\":\"MERGED\"},\"patchSet\":{\"number\":2,\"revision\":\"e44a8ded44bb5713515cd49460f0917eae68797a\"},\"type\":\"change-merged\",\"eventCreatedOn\":1765530616}---->status:204"
+      ],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  },
+  {
+    "id": 82,
+    "description": "提交代码失败",
+    "messgae": "用户：jenkins1\nIP：192.168.5.3\n执行：git push origin HEAD:refs/for/master\nremote: ERROR: change 21995 closed\nTo ssh://192.168.5.2:29418/gerrit-code\n ! [remote rejected] HEAD -> refs/for/master (change 21995 closed)\nerror: failed to push some refs to 'ssh://192.168.5.2:29418/gerrit-code'",
+    "root_case": "对应变更集已关闭",
+    "logs": {
+      "sshd_log": [
+        "[2025-12-12T11:17:27.643+08:00] 24a9814a [sshd-SshDaemon[cb3ec6af](port=29418)-nio2-thread-17] jenkins1 a/1008521 git-receive-pack /gerrit-code FROM 192.168.5.3",
+        "[2025-12-12T11:17:28.563+08:00] 24a9814a [sshd-SshDaemon[cb3ec6af](port=29418)-nio2-thread-17] jenkins1 a/1008521 LOGOUT"
+      ],
+      "httpd_log": [],
+      "error_log": [
+        "[2025-12-12T11:17:27.910+08:00] [ReceiveCommits-3[receive-commits]-for-SSH git-receive-pack /gerrit-code (jenkins1)] ERROR com.google.gerrit.server.git.receive.ReceiveCommits : change 21995 is closed; cannot add patch set for user jenkins1"
+      ],
+      "events_log": [
+        "[2025-12-12 09:35:27,643] event received type:change-abandoned---->json:{\"abandoner\":{\"email\":\"jenkins1@nuaa.edu.cn\",\"username\":\"jenkins1\"},\"change\":{\"project\":\"gerrit-code\",\"branch\":\"master\",\"id\":\"Id933099247ffa3c03f8ecbe5bca3a9e4789d7b03\",\"number\":21995,\"subject\":\"fix: rollback unsupported patch\",\"owner\":{\"email\":\"jenkins1@nuaa.edu.cn\",\"username\":\"jenkins1\"},\"url\":\"http://192.168.5.2:8081/c/gerrit-code/+/21995\",\"status\":\"ABANDONED\"},\"patchSet\":{\"number\":1,\"revision\":\"e6c1aadab2a6fe1e3f32ad3a623d254e33d8c6da\"},\"reason\":\"Change is already closed\",\"type\":\"change-abandoned\",\"eventCreatedOn\":1765532247}---->status:204"
+      ],
+      "jenkins.log": [],
+      "access.log": [],
+      "error.log": [],
+      "replication_log": []
+    }
+  }
+]

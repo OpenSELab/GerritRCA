@@ -94,7 +94,7 @@ class ChechFlowGenerator:
     """
 
     def __init__(self, row, df_description_map, job_name, description, dynamic):
-        self.llm = LLMClient(configs.DEEPSEEK_CONFIG)
+        self.llm = LLMClient(configs.LLM_CONFIG)
         self.key_row = row
         self.file_map = df_description_map
         self.job = job_name

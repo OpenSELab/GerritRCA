@@ -1,4 +1,7 @@
 # coding=utf-8
+# @File : match
+# @Project : fault-analysis
+# @Description :
 import os
 import re
 import json
@@ -24,7 +27,7 @@ class Matcher:
         :param fault_description:
         :param path:工作流库文件地址
         """
-        self.llm = LLMClient(llm_config=configs.DEEPSEEK_CONFIG)
+        self.llm = LLMClient(llm_config=configs.LLM_CONFIG)
         self.fault = fault_description
         self.path = path
 

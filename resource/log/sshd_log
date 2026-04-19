@@ -7,3 +7,118 @@
 [2025-09-09 10:00:02,234 +0800] 1f2g3h4i wangwu a/1456791 LOGIN FROM 192.168.2.212 to 172.16.3.103
 [2025-09-09 10:00:02,456 +0800] 1f2g3h4i wangwu a/1456791 git-ls-remote ./test-project 2ms 123ms 0 git/2.35.1 192.168.2.212 172.16.3.103
 [2025-09-09 10:00:02,458 +0800] 1f2g3h4i wangwu a/1456791 LOGOUT FROM 192.168.2.212 to 172.16.3.103
+[2025-08-27T15:04:32.840+08:00] 59a47598 [sshd-SshDaemon[76b17a78](port=22)-nio2-thread-16] roselee a/1000000 LOGIN FROM 192.168.5.7
+[2025-08-27T15:04:33.107+08:00] 59a47598 [SSH git-receive-pack /gerrit-code (roselee)] roselee a/1000000 git-receive-pack./gerrit-code 2ms 201ms - 0 git/2.37.0.windows.1 29ms 20ms 3023568
+[2025-08-27T15:04:33.203+08:00] 59a47598 [sshd-SshDaemon[76b17a78](port=22)-nio2-thread-11] roselee a/1000000 LOGOUT
+[2025-08-27T15:04:39.033+08:00] be1b17f3 [sshd-SshDaemon[76b17a78](port=22)-nio2-thread-17] jenkins a/1000002 LOGIN FROM 192.168.5.3
+[2025-08-27T15:04:39.088+08:00] be1b17f3 [SSH git-upload-pack /gerrit-code (jenkins)] jenkins a/1000002 git-upload-pack./gerrit-code 1ms 46ms '-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1' 0 - 1ms 0ms 126472
+[2025-08-27T15:04:39.131+08:00] be1b17f3 [sshd-SshDaemon[76b17a78](port=22)-nio2-thread-12] jenkins a/1000002 LOGOUT
+[2025-09-03T14:22:15.673+08:00] 8c3d9f71 [sshd-SshDaemon[4a7e2b9c](port=22)-nio2-thread-28] roselee a/1000000 LOGIN FROM 192.168.5.7
+[2025-09-03T14:22:16.128+08:00] 8c3d9f71 [SSH git-receive-pack /gerrit-code (roselee)] roselee a/1000000 git-receive-pack./gerrit-code 4ms 267ms - 0 git/2.38.1 35ms 24ms 3891245
+[2025-09-03T14:22:16.492+08:00] 8c3d9f71 [sshd-SshDaemon[4a7e2b9c](port=22)-nio2-thread-33] roselee a/1000000 LOGOUT
+[2025-09-03T09:45:12.334+08:00] d2f8a9c4 [sshd-SshDaemon[5b9e3c1d](port=22)-nio2-thread-19] roselee a/1000000 LOGIN FROM 192.168.5.7
+[2025-09-03T09:45:12.789+08:00] d2f8a9c4 [SSH git-receive-pack /gerrit-code (roselee)] roselee a/1000000 git-receive-pack./gerrit-code 3ms 234ms - 0 git/2.39.0 31ms 22ms 3678902
+[2025-09-03T09:45:13.156+08:00] d2f8a9c4 [sshd-SshDaemon[5b9e3c1d](port=22)-nio2-thread-24] roselee a/1000000 LOGOUT
+[2025-09-03T13:47:28.912+08:00] 1a9f3e6b [SSHD] bill - AUTH FAILURE FROM 192.168.5.13 - - - key-list-empty - - - -
+[2025-09-03T13:48:41.567+08:00] 4c2d7f9e [SSHD] tom - AUTH FAILURE FROM 192.168.5.8 - - - no-matching-key - - - -
+[2025-09-03T13:50:03.234+08:00] 7e5b8a0d [SSHD] hyj - AUTH FAILURE FROM 192.168.5.10 - - - key-list-empty - - - -
+[2025-09-03T14:10:55.678+08:00] 3b7e1f9a [SSHD] wronguser - AUTH FAILURE FROM 192.168.5.7 - - - user-not-found - - - -
+[2025-09-03T14:12:41.123+08:00] 6d9f2c8b [SSHD] tomwrong - AUTH FAILURE FROM 192.168.5.8 - - - user-not-found - - - -
+[2025-09-03T14:15:19.456+08:00] 8a4c5e2d [SSHD] hyj_fake - AUTH FAILURE FROM 192.168.5.10 - - - user-not-found - - - -
+[2025-09-03T15:27:41.892+08:00] 5e9c2f7d [SSHD] roselee - AUTH FAILURE FROM 192.168.5.7 - - - key-list-empty - - - -
+[2025-09-03T15:29:18.346+08:00] 2a8d4e1f [SSHD] tom - AUTH FAILURE FROM 192.168.5.8 - - - key-list-empty - - - -
+[2025-09-03T15:31:05.774+08:00] 7b3f6c9a [SSHD] hyj - AUTH FAILURE FROM 192.168.5.10 - - - key-list-empty - - - -
+[2025-09-03T16:12:34.567+08:00] 9d4e1c7f [SSHD] roselee - AUTH FAILURE FROM 192.168.5.7 - - - no-matching-key - - - -
+[2025-09-03T16:14:09.821+08:00] 3f6a2b8e [SSHD] tom - AUTH FAILURE FROM 192.168.5.8 - - - no-matching-key - - - -
+[2025-09-03T16:16:45.233+08:00] 5c9b7d1a [SSHD] hyj - AUTH FAILURE FROM 192.168.5.10 - - - no-matching-key - - - -
+[2025-09-03T16:19:22.456+08:00] 2e8f5c9b [SSHD] bill - AUTH FAILURE FROM 192.168.5.13 - - - no-matching-key - - - -
+[2025-09-04T09:18:27.341+08:00] 4f7a2d9c [SSHD] wrongrose - AUTH FAILURE FROM 192.168.5.7 - - - user-not-found - - - -
+[2025-09-04T15:16:04.789+08:00] 4b7d2e9f [SSHD] tom - AUTH FAILURE FROM 192.168.5.8 - - - no-matching-key - - - -
+[2025-09-04T16:12:46.123+08:00] 3f8d2a9e [SSHD] jenkins - AUTH FAILURE FROM 192.168.5.3 - - - no-matching-key - - - -
+[2025-09-04T16:12:45.678+08:00] 3f8d2a9e [SSHD] jenkins - AUTH FAILURE FROM 192.168.5.3 - - - no-matching-key - - - -
+[2025-09-04T16:16:12.345+08:00] a4b7e9f2 [SSHD] jenkins1 - AUTH FAILURE FROM 192.168.5.3 - - - user-not-found - - - -
+[2025-09-04T16:16:12.789+08:00] a4b7e9f2 [SSHD] jenkins1 - AUTH FAILURE FROM 192.168.5.3 - - - user-not-found - - - -
+[2025-09-04T16:16:13.234+08:00] a4b7e9f2 [SSHD] jenkins1 - AUTH FAILURE FROM 192.168.5.3 - - - user-not-found - - - -
+[2025-09-04T16:30:21.789+08:00] 4e5f7a9c [SSHD] jenkins - AUTH FAILURE FROM 192.168.5.3 - - - key-list-empty - - - -
+[2025-09-04T16:35:30.912+08:00] 3b9d2e6f [SSHD] jenkins - AUTH FAILURE FROM 192.168.5.3 - - - no-matching-key - - - -
+[2025-09-04T16:40:39.234+08:00] 8a1b3c5d [sshd-SshDaemon31a1d626-nio2-thread-12] jenkins a/1000002 LOGIN FROM 192.168.5.3
+[2025-09-04T16:40:39.456+08:00] 8a1b3c5d [SSH gerrit stream-events (jenkins)] jenkins a/1000002 stream-events 1ms 3ms - - - - - - - - -
+[2025-09-04T16:40:39.678+08:00] 8a1b3c5d [sshd-SshDaemon31a1d626-nio2-thread-13] jenkins a/1000002 LOGOUT
+[2025-09-04T16:45:12.347+08:00] 5d8e2f9a [SSHD] jenkins1 - AUTH FAILURE FROM 192.168.5.3 - - - user-not-found - - - -
+[2025-11-15T11:22:45.678+08:00] 9d4e1f6a [sshd-SshDaemon76b17a78-nio2-thread-22] tom a/1000003 LOGIN FROM 192.168.5.8
+[2025-11-15T11:27:45.123+08:00] 9d4e1f6a [SSH git-upload-pack /gerrit-code (tom)] tom a/1000003 git-upload-pack./gerrit-code 2ms 300000ms timeout -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 0 - 300000ms 0ms 2147483647
+[2025-11-15T11:27:46.234+08:00] 9d4e1f6a [sshd-SshDaemon76b17a78-nio2-thread-23] tom a/1000003 LOGOUT
+[2025-11-15T13:05:30.456+08:00] 4a9e3f71 [sshd-SshDaemon76b17a78-nio2-thread-45] hyj a/1000004 LOGIN FROM 192.168.5.10
+[2025-11-15T13:15:30.789+08:00] 4a9e3f71 [SSH git-upload-pack /gerrit-code (hyj)] hyj a/1000004 git-upload-pack./gerrit-code 3ms 600000ms timeout -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 0 - 600000ms 0ms 4567890123
+[2025-11-15T13:15:31.012+08:00] 4a9e3f71 [sshd-SshDaemon76b17a78-nio2-thread-46] hyj a/1000004 LOGOUT
+[2025-11-15T15:40:10.567+08:00] 1b8f4c5d [sshd-SshDaemon76b17a78-nio2-thread-67] jenkins a/1000005 LOGIN FROM 192.168.5.3
+[2025-11-15T15:43:10.890+08:00] 1b8f4c5d [SSH git-upload-pack /gerrit-code (jenkins)] jenkins a/1000005 git-upload-pack./gerrit-code 1ms 180000ms timeout -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 0 - 180000ms 0ms 987654321
+[2025-11-15T15:43:11.123+08:00] 1b8f4c5d [sshd-SshDaemon76b17a78-nio2-thread-68] jenkins a/1000005 LOGOUT
+[2025-11-15T09:15:22.134+08:00] 4b9e2f1d [sshd-SshDaemon76b17a78-nio2-thread-11] administer a/1000001 LOGIN FROM 192.168.5.9
+[2025-11-15T09:15:45.890+08:00] 4b9e2f1d [SSH git-upload-pack /gerrit-code (administer)] administer a/1000001 git-upload-pack./gerrit-code 1ms 12ms - 0 git/2.39.2 45ms 30ms 0
+[2025-11-15T09:15:46.123+08:00] 4b9e2f1d [sshd-SshDaemon76b17a78-nio2-thread-12] administer a/1000001 LOGOUT
+[2025-11-15T17:05:20.456+08:00] 2c3d4e5f [sshd-SshDaemon76b17a78-nio2-thread-62] jenkins a/1000002 LOGIN FROM 192.168.5.3
+[2025-11-15T17:05:55.789+08:00] 2c3d4e5f [SSH git-upload-pack /gerrit-code (jenkins)] jenkins a/1000002 git-upload-pack./gerrit-code 1ms 11ms - 0 git/2.39.5 42ms 28ms 0
+[2025-11-15T17:05:56.012+08:00] 2c3d4e5f [sshd-SshDaemon76b17a78-nio2-thread-63] jenkins a/1000002 LOGOUT
+[2025-11-15T16:38:10.234+08:00] 5e6f7a8b [sshd-SshDaemon76b17a78-nio2-thread-37] bill a/1000005 LOGIN FROM 192.168.5.13
+[2025-11-15T16:38:42.567+08:00] 5e6f7a8b [SSH git-upload-pack /gerrit-code (bill)] bill a/1000005 git-upload-pack./gerrit-code 1ms 9ms - 0 git/2.38.1 31ms 19ms 0
+[2025-11-15T16:38:42.789+08:00] 5e6f7a8b [sshd-SshDaemon76b17a78-nio2-thread-38] bill a/1000005 LOGOUT
+[2025-11-15T16:25:10.456+08:00] 3f8a9b2c [sshd-SshDaemon76b17a78-nio2-thread-18] tom a/1000003 LOGIN FROM 192.168.5.8
+[2025-11-15T16:25:28.789+08:00] 3f8a9b2c [SSH git-upload-pack /test-code (tom)] tom a/1000003 git-upload-pack./test-code 1ms 5ms - 0 git/2.39.3 18ms 10ms 0
+[2025-11-15T16:25:29.012+08:00] 3f8a9b2c [sshd-SshDaemon76b17a78-nio2-thread-19] tom a/1000003 LOGOUT
+[2025-11-15T16:55:40.123+08:00] 6d4e5f7a [sshd-SshDaemon76b17a78-nio2-thread-34] hyj a/1000006 LOGIN FROM 192.168.5.10
+[2025-11-15T16:56:05.456+08:00] 6d4e5f7a [SSH git-upload-pack /test-code (hyj)] hyj a/1000006 git-upload-pack./test-code 1ms 6ms - 0 git/2.37.0 22ms 12ms 0
+[2025-11-15T16:56:05.678+08:00] 6d4e5f7a [sshd-SshDaemon76b17a78-nio2-thread-35] hyj a/1000006 LOGOUT
+[2025-11-15T17:20:15.234+08:00] 8c2b1d4e [sshd-SshDaemon76b17a78-nio2-thread-58] jenkins a/1000002 LOGIN FROM 192.168.5.3
+[2025-11-15T17:20:40.789+08:00] 8c2b1d4e [sshd-SshDaemon76b17a78-nio2-thread-59] jenkins a/1000002 LOGOUT
+[2025-11-15T16:45:20.345+08:00] 7c9d4e2f [sshd-SshDaemon76b17a78-nio2-thread-27] tom a/1000003 LOGIN FROM 192.168.5.8
+[2025-11-15T16:45:35.678+08:00] 7c9d4e2f [SSH git-receive-pack /test-code (tom)] tom a/1000003 git-receive-pack./test-code 1ms 6ms - 0 git/2.39.3 22ms 14ms 0
+[2025-11-15T16:45:35.901+08:00] 7c9d4e2f [sshd-SshDaemon76b17a78-nio2-thread-28] tom a/1000003 LOGOUT
+[2025-11-15T17:10:55.123+08:00] 4a1b5c6d [sshd-SshDaemon76b17a78-nio2-thread-41] hyj a/1000006 LOGIN FROM 192.168.5.10
+[2025-11-15T17:11:18.456+08:00] 4a1b5c6d [SSH git-receive-pack /test-code (hyj)] hyj a/1000006 git-receive-pack./test-code 1ms 7ms - 0 git/2.37.0 26ms 16ms 0
+[2025-11-15T17:11:18.678+08:00] 4a1b5c6d [sshd-SshDaemon76b17a78-nio2-thread-42] hyj a/1000006 LOGOUT
+[2025-11-15T18:05:12.345+08:00] 1d3e5f7g [sshd-SshDaemon76b17a78-nio2-thread-81] administer a/1000001 LOGIN FROM 192.168.5.9
+[2025-11-15T18:05:28.678+08:00] 1d3e5f7g [SSH gerrit review 12345 (administer)] administer a/1000001 gerrit review 12345 --message "111" --label Code-Review+2 1ms 6ms - - - - - - - - -
+[2025-11-15T18:05:28.901+08:00] 1d3e5f7g [sshd-SshDaemon76b17a78-nio2-thread-82] administer a/1000001 LOGOUT
+[2025-11-15T18:35:40.234+08:00] 8h2k4m6n [sshd-SshDaemon76b17a78-nio2-thread-95] bill a/1000005 LOGIN FROM 192.168.5.13
+[2025-11-15T18:35:58.567+08:00] 8h2k4m6n [SSH gerrit review 12456 (bill)] bill a/1000005 gerrit review 12456 --label Code-Review+1 --message "Verified" 1ms 7ms - - - - - - - - -
+[2025-11-15T18:35:58.789+08:00] 8h2k4m6n [sshd-SshDaemon76b17a78-nio2-thread-96] bill a/1000005 LOGOUT
+[2025-11-15T19:10:25.456+08:00] 3p5q7r9s [sshd-SshDaemon76b17a78-nio2-thread-112] roselee a/1000000 LOGIN FROM 192.168.5.7
+[2025-11-15T19:10:45.789+08:00] 3p5q7r9s [SSH gerrit review 12567 (roselee)] roselee a/1000001 gerrit review 12345 --message "111" --label Code-Review+2 1ms 6ms - - - - - - - - -
+[2025-11-15T19:10:46.012+08:00] 3p5q7r9s [sshd-SshDaemon76b17a78-nio2-thread-113] roselee a/1000000 LOGOUT
+[2025-12-12T09:18:15.784+08:00] d7571563 [sshd-SshDaemon[36d2c206](port=29418)-nio2-thread-39] bill a/1000440 SSH_REQUEST "gerrit create-branch gerrit-code refs/heads/release/2025.12 master" FROM 192.168.5.13
+[2025-12-12T09:18:16.217+08:00] d7571563 [sshd-SshDaemon[36d2c206](port=29418)-nio2-thread-39] bill a/1000440 LOGOUT
+[2025-12-12T09:25:10.831+08:00] 55214917 [sshd-SshDaemon[32c5f274](port=29418)-nio2-thread-34] hyj a/1002496 SSH_REQUEST "gerrit delete-branch gerrit-code refs/heads/feature/obsolete-api" FROM 192.168.5.10
+[2025-12-12T09:25:11.094+08:00] 55214917 [sshd-SshDaemon[32c5f274](port=29418)-nio2-thread-34] hyj a/1002496 LOGOUT
+[2025-12-12T09:32:39.511+08:00] 4f121807 [sshd-SshDaemon[63b63bb2](port=29418)-nio2-thread-15] jenkins1 a/1007122 SSH_REQUEST "gerrit review 18234,1 --abandon" FROM 192.168.5.3
+[2025-12-12T09:32:40.464+08:00] 4f121807 [sshd-SshDaemon[63b63bb2](port=29418)-nio2-thread-15] jenkins1 a/1007122 LOGOUT
+[2025-12-12T09:39:17.135+08:00] d647a829 [sshd-SshDaemon[1659d67e](port=29418)-nio2-thread-28] tom a/1003286 SSH_REQUEST "gerrit review 18235,1 --restore" FROM 192.168.5.8
+[2025-12-12T09:39:18.065+08:00] d647a829 [sshd-SshDaemon[1659d67e](port=29418)-nio2-thread-28] tom a/1003286 LOGOUT
+[2025-12-12T09:46:24.507+08:00] 11205c0f [sshd-SshDaemon[1f5c915c](port=29418)-nio2-thread-19] bill a/1002124 git-upload-pack /missing-demo-project FROM 192.168.5.13
+[2025-12-12T09:46:25.327+08:00] 11205c0f [sshd-SshDaemon[1f5c915c](port=29418)-nio2-thread-19] bill a/1002124 LOGOUT
+[2025-12-12T09:53:34.061+08:00] 410a0285 [sshd-SshDaemon[311f42ae](port=29418)-nio2-thread-12] roselee a/1007242 git-receive-pack /gerrit-code FROM 192.168.5.7
+[2025-12-12T09:53:34.924+08:00] 410a0285 [sshd-SshDaemon[311f42ae](port=29418)-nio2-thread-12] roselee a/1007242 LOGOUT
+[2025-12-12T10:00:21.915+08:00] 83145697 [sshd-SshDaemon[3b5f8dab](port=29418)-nio2-thread-12] administer a/1009969 SSH_REQUEST "gerrit create-project demo-team/new-service --empty-commit" FROM 192.168.5.9
+[2025-12-12T10:00:22.390+08:00] 83145697 [sshd-SshDaemon[3b5f8dab](port=29418)-nio2-thread-12] administer a/1009969 LOGOUT
+[2025-12-12T10:07:41.789+08:00] 45c9f8a8 [sshd-SshDaemon[5313fa1a](port=29418)-nio2-thread-27] roselee a/1001089 git-receive-pack /gerrit-code FROM 192.168.5.7
+[2025-12-12T10:07:42.463+08:00] 45c9f8a8 [sshd-SshDaemon[5313fa1a](port=29418)-nio2-thread-27] roselee a/1001089 LOGOUT
+[2025-12-12T10:14:15.849+08:00] 5ee6aa66 [sshd-SshDaemon[b88bef87](port=29418)-nio2-thread-26] hyj a/1001288 git-receive-pack /gerrit-code FROM 192.168.5.10
+[2025-12-12T10:14:16.677+08:00] 5ee6aa66 [sshd-SshDaemon[b88bef87](port=29418)-nio2-thread-26] hyj a/1001288 LOGOUT
+[2025-12-12T10:21:44.620+08:00] fbe5b43b [sshd-SshDaemon[e59d81fa](port=29418)-nio2-thread-22] tom a/1006109 git-receive-pack /gerrit-code FROM 192.168.5.8
+[2025-12-12T10:21:45.124+08:00] fbe5b43b [sshd-SshDaemon[e59d81fa](port=29418)-nio2-thread-22] tom a/1006109 LOGOUT
+[2025-12-12T10:28:43.882+08:00] 61d2bdcd [sshd-SshDaemon[c9dc0100](port=29418)-nio2-thread-26] jenkins a/1009547 git-receive-pack /gerrit-code FROM 192.168.5.3
+[2025-12-12T10:28:44.479+08:00] 61d2bdcd [sshd-SshDaemon[c9dc0100](port=29418)-nio2-thread-26] jenkins a/1009547 LOGOUT
+[2025-12-12T10:35:14.023+08:00] 53fa2c36 [sshd-SshDaemon[934ffc82](port=29418)-nio2-thread-21] bill a/1007861 git-receive-pack /gerrit-code FROM 192.168.5.13
+[2025-12-12T10:35:14.642+08:00] 53fa2c36 [sshd-SshDaemon[934ffc82](port=29418)-nio2-thread-21] bill a/1007861 LOGOUT
+[2025-12-12T10:42:13.743+08:00] 2a6739c8 [sshd-SshDaemon[d64bb468](port=29418)-nio2-thread-27] roselee a/1009430 git-receive-pack /gerrit-code FROM 192.168.5.7
+[2025-12-12T10:42:14.274+08:00] 2a6739c8 [sshd-SshDaemon[d64bb468](port=29418)-nio2-thread-27] roselee a/1009430 LOGOUT
+[2025-12-12T10:49:14.199+08:00] 18063979 [sshd-SshDaemon[7923090b](port=29418)-nio2-thread-37] administer a/1002027 git-receive-pack /gerrit-code FROM 192.168.5.9
+[2025-12-12T10:49:14.951+08:00] 18063979 [sshd-SshDaemon[7923090b](port=29418)-nio2-thread-37] administer a/1002027 LOGOUT
+[2025-12-12T10:56:38.510+08:00] f1f0c761 [sshd-SshDaemon[49d993e1](port=29418)-nio2-thread-35] tom a/1005806 git-receive-pack /gerrit-code FROM 192.168.5.8
+[2025-12-12T10:56:39.058+08:00] f1f0c761 [sshd-SshDaemon[49d993e1](port=29418)-nio2-thread-35] tom a/1005806 LOGOUT
+[2025-12-12T11:03:13.419+08:00] 180606d5 [sshd-SshDaemon[ead3955a](port=29418)-nio2-thread-15] hyj a/1006294 git-receive-pack /gerrit-code FROM 192.168.5.10
+[2025-12-12T11:03:14.157+08:00] 180606d5 [sshd-SshDaemon[ead3955a](port=29418)-nio2-thread-15] hyj a/1006294 LOGOUT
+[2025-12-12T11:10:16.276+08:00] b916d6d4 [sshd-SshDaemon[984d8606](port=29418)-nio2-thread-16] roselee a/1002149 git-receive-pack /gerrit-code FROM 192.168.5.7
+[2025-12-12T11:10:17.130+08:00] b916d6d4 [sshd-SshDaemon[984d8606](port=29418)-nio2-thread-16] roselee a/1002149 LOGOUT
+[2025-12-12T11:17:27.643+08:00] 24a9814a [sshd-SshDaemon[cb3ec6af](port=29418)-nio2-thread-17] jenkins1 a/1008521 git-receive-pack /gerrit-code FROM 192.168.5.3
+[2025-12-12T11:17:28.563+08:00] 24a9814a [sshd-SshDaemon[cb3ec6af](port=29418)-nio2-thread-17] jenkins1 a/1008521 LOGOUT

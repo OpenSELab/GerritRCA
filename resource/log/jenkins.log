@@ -1,0 +1,76 @@
+2025-08-27 07:04:33.186+0000 [id=302] INFO c.s.h.p.g.t.g.ToGerritRunListener#onTriggered: Project [demo1] triggered by Gerrit: [PatchsetCreated: Change-Id for #241: Ic112a59e81a7de52d1f9cd397cfca4f01d77c071 PatchSet: 1]
+2025-08-27 07:04:33.190+0000 [id=302] INFO c.s.h.p.g.t.h.EventListener#schedule: Project demo1 Build Scheduled: true By event: 241/1
+2025-08-27 07:04:38.745+0000 [id=511] INFO c.s.h.p.g.t.g.ToGerritRunListener#onStarted: Gerrit build [demo1 #33] Started for cause: [GerritCause: PatchsetCreated: Change-Id for #241: Ic112a59e81a7de52d1f9cd397cfca4f01d77c071 PatchSet: 1 silent: false].
+2025-08-27 07:04:38.746+0000 [id=511] INFO c.s.h.p.g.t.g.ToGerritRunListener#onStarted: MemoryStatus:
+  Project/Build: [demo1]: [#33: null] Completed: false
+2025-08-27 07:04:38.756+0000 [id=314] SEVERE c.s.t.g.g.w.r.AbstractRestCommandJob#run: Gerrit response: Unauthorized
+2025-09-04 16:12:45.789+0800 [id=1234] INFO hudson.plugins.gerrit.trigger.GerritServer#testConnection: Testing connection to Gerrit server at 192.168.5.2:29418
+2025-09-04 16:12:45.912+0800 [id=1234] SEVERE hudson.plugins.gerrit.trigger.GerritServer#testConnection: Failed to connect to Gerrit server: Permission denied (publickey).
+com.jcraft.jsch.JSchException: Auth fail
+ at com.jcraft.jsch.Session.connect(Session.java:558)
+ at com.jcraft.jsch.Session.connect(Session.java:183)
+ at hudson.plugins.gerrit.trigger.GerritServer.testConnection(GerritServer.java:456)
+ at hudson.plugins.gerrit.trigger.config.IGerritHudsonTriggerConfig.testConnection(IGerritHudsonTriggerConfig.java:123)
+ at hudson.plugins.gerrit.trigger.GerritTrigger.doTestConnection(GerritTrigger.java:789)
+2025-09-04 16:16:12.312+0800 [id=567] INFO com.sonyericsson.hudson.plugins.gerrit.trigger.GerritServer#testConnection: Testing connection to Gerrit server 'Default' (host: 192.168.5.2, port: 29418, username: jenkins_wrong) 
+2025-09-04 16:16:12.345+0800 [id=567] INFO com.jcraft.jsch.JSch#getSession: Attempting to get session for user 'jenkins_wrong' on host 192.168.5.2 
+2025-09-04 16:16:12.567+0800 [id=567] INFO com.jcraft.jsch.Session#connect: Connecting to 192.168.5.2 port 29418
+2025-09-04 16:16:12.789+0800 [id=567] WARNING com.jcraft.jsch.Session#connect: Authentication failed for user 'jenkins_wrong'
+ at com.sonyericsson.hudson.plugins.gerrit.trigger.hudsontrigger.GerritTriggerConnection.testConnection(GerritTriggerConnection.java:178)
+ at com.sonyericsson.hudson.plugins.gerrit.trigger.GerritServer.testConnection(GerritServer.java:412)
+ at com.sonyericsson.hudson.plugins.gerrit.trigger.PluginImpl.doTestConnection(PluginImpl.java:789)
+ at java.lang.invoke.MethodHandle.invokeWithArguments(MethodHandle.java:627)
+ at org.kohsuke.stapler.Function$MethodFunction.invoke(Function.java:396)
+ at org.kohsuke.stapler.Function$InstanceFunction.invoke(Function.java:408)
+ at org.kohsuke.stapler.Function.bindAndInvoke(Function.java:212)
+ at org.kohsuke.stapler.Function.bindAndInvokeAndServeResponse(Function.java:145)
+ at org.kohsuke.stapler.MetaClass$11.doDispatch(MetaClass.java:535)
+ at org.kohsuke.stapler.NameBasedDispatcher.dispatch(NameBasedDispatcher.java:58)
+ at org.kohsuke.stapler.Stapler.tryInvoke(Stapler.java:747)
+ at org.kohsuke.stapler.Stapler.invoke(Stapler.java:878)
+ at org.kohsuke.stapler.MetaClass$4.doDispatch(MetaClass.java:280)
+ ... 42 more
+Caused by: com.jcraft.jsch.JSchException: Auth fail
+ at com.jcraft.jsch.Session.connect(Session.java:525)
+ ... 56 more
+2025-09-04 16:16:13.012+0800 [id=567] SEVERE com.sonyericsson.hudson.plugins.gerrit.trigger.GerritServer#testConnection: Failed to connect to Gerrit server 'Default'
+ ... (stack trace same as above)
+2025-09-04 16:16:13.234+0800 [id=567] WARNING hudson.plugins.gerrit.GerritTrigger: Connection test to Gerrit server failed: Auth fail for user 'jenkins_wrong'. Please check the username in Gerrit Trigger configuration.
+2025-09-04 16:16:13.456+0800 [id=567] INFO hudson.model.Descriptor#newInstancesFromHeteroList: Failed to instantiate credentials for Gerrit connection test
+2026-09-04 14:27:11.234+0800 [id=2345] INFO hudson.plugins.gerrit.trigger.GerritServer#testConnection: Testing connection to Gerrit server 'Default' (host: 192.168.5.55, port: 29418, username: jenkins)
+2026-09-04 14:27:11.389+0800 [id=2345] INFO com.jcraft.jsch.JSch#getSession: Attempting to get session for user 'jenkins' on host 192.168.5.55
+2026-09-04 14:27:11.512+0800 [id=2345] INFO com.jcraft.jsch.Session#connect: Connecting to 192.168.5.55 port 29418
+2026-09-04 14:27:16.678+0800 [id=2345] SEVERE c.s.t.g.g.GerritConnection#connect: IOException:
+java.net.ConnectException: Connection refused
+ at java.base/sun.nio.ch.Net.connect0(Native Method)
+ at java.base/sun.nio.ch.Net.connect(Net.java:589)
+ at java.base/sun.nio.ch.Net.connect(Net.java:578)
+ at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:583)
+ at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+ at java.base/java.net.Socket.connect(Socket.java:757)
+ at com.jcraft.jsch.Util.createSocket(Util.java:376)
+Caused: com.jcraft.jsch.JSchException
+ at com.jcraft.jsch.Util.createSocket(Util.java:386)
+ at com.jcraft.jsch.Session.connect(Session.java:230)
+ ...
+ at com.sonymobile.tools.gerrit.gerritevents.GerritConnection.connect(GerritConnection.java:498)
+ at com.sonymobile.tools.gerrit.gerritevents.GerritConnection.run(GerritConnection.java:404)
+2026-09-04 14:27:16.845+0800 [id=2345] SEVERE hudson.plugins.gerrit.trigger.GerritServer#testConnection: Failed to connect to Gerrit server: Connection refused
+2026-09-04 14:27:16.912+0800 [id=2345] WARNING hudson.plugins.gerrit.GerritTrigger: Connection test to Gerrit server failed: Connection refused. Please check the host and port in Gerrit Trigger configuration.
+2025-09-04 16:30:05.234+0800 [id=1890] INFO hudson.plugins.gerrit.trigger.GerritServer#testConnection: Testing connection to Gerrit server 'Default' (host: 192.168.5.2, port: 29418, username: jenkins)
+2025-09-04 16:30:05.389+0800 [id=1890] SEVERE hudson.plugins.gerrit.trigger.GerritServer#testConnection: Failed to connect to Gerrit server
+com.sonyericsson.hudson.plugins.gerrit.trigger.GerritException: No SSH key configured or key file not found
+    at hudson.plugins.gerrit.trigger.config.GerritServerConfig.getIdentity Caused by: java.io.FileNotFoundException: /var/lib/jenkins/.ssh/id_rsa (No such file or directory)
+2025-09-04 16:30:18.456+0800 [id=2011] INFO hudson.plugins.gerrit.trigger.GerritServer#testConnection: Testing connection to Gerrit server 'Default' (host: 192.168.5.2, port: 29418, username: jenkins)
+2025-09-04 16:30:22.123+0800 [id=2011] WARNING com.jcraft.jsch.Session#connect: Authentication failed for user 'jenkins' com.jcraft.jsch.JSchException: Auth fail
+2025-09-04 16:35:28.567+0800 [id=2123] INFO hudson.plugins.gerrit.trigger.GerritServer#testConnection: Testing connection to Gerrit server 'Default' (host: 192.168.5.2, port: 29418, username: jenkins)
+2025-09-04 16:35:31.234+0800 [id=2123] WARNING com.jcraft.jsch.Session#connect: Authentication failed for user 'jenkins'
+2025-09-04 16:40:38.123+0800 [id=2234] INFO hudson.plugins.gerrit.trigger.GerritServer#testConnection: Testing connection to Gerrit server 'Default' (host: 192.168.5.2, port: 29418, username: jenkins)
+2025-09-04 16:40:40.456+0800 [id=2234] INFO com.sonyericsson.hudson.plugins.gerrit.trigger.GerritConnection: Connected to Gerrit via SSH
+2025-09-04 16:40:40.589+0800 [id=2234] SEVERE com.sonyericsson.hudson.plugins.gerrit.trigger.GerritConnection#connect: Failed to connect to Gerrit event stream
+com.sonyericsson.hudson.plugins.gerrit.trigger.StreamEventsCapabilityException: User jenkins has no capability to connect to Gerrit event stream.
+2025-09-04 16:40:40.712+0800 [id=2234] WARNING hudson.plugins.gerrit.GerritTrigger: Connection test to Gerrit server failed: User jenkins has no capability to connect to Gerrit event stream.
+2025-09-04 16:45:08.456+0800 [id=2678] INFO hudson.plugins.gerrit.trigger.GerritServer#testConnection: Testing connection to Gerrit server 'Default' (host: 192.168.5.2, port: 29418, username: jenkins_wrong)
+2025-09-04 16:45:08.612+0800 [id=2678] INFO com.jcraft.jsch.JSch#getSession: Attempting to get session for user 'jenkins1' on host 192.168.5.2
+2025-09-04 16:45:12.234+0800 [id=2678] WARNING com.jcraft.jsch.Session#connect: Authentication failed for user 'jenkins1'com.jcraft.jsch.JSchException: Auth fail
+2025-09-04 16:45:12.523+0800 [id=2678] WARNING hudson.plugins.gerrit.GerritTrigger: Connection test to Gerrit server failed: Auth fail for user 'jenkins1'. Please check the username in Gerrit Trigger configuration.

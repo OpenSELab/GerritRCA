@@ -22,7 +22,7 @@ class LogTrackingAgent:
 
     def __init__(self, *_args, llm_config: Optional[dict] = None):
         self._content: Dict[str, str] = {}
-        self._llm = ZteLLMClient(llm_config or configs.ZTE_V3_CONFIG)
+        self._llm = ZteLLMClient(llm_config or configs.LLM_CONFIG)
         self._complement_info = None
 
     def to_dict(self):
@@ -69,7 +69,7 @@ class LogTrackingAgent:
 
         try:
             template_list, parse_result = template_generating(
-                llm_config=configs.ZTE_V3_CONFIG,
+                llm_config=configs.LLM_CONFIG,
                 log_file_line=log_lines,
                 template_name=template_name,
             )

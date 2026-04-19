@@ -1,6 +1,7 @@
 # coding=utf-8
-# @Time : 2025/6/17 19:31
-
+# @File : generate
+# @Project : fault-analysis
+# @Description :
 """
 以日志数据为输入，输出知识库
 
@@ -750,12 +751,7 @@ if __name__ == '__main__':
     end_time = '2025-07-29 09:56:55'  # 结束时间
     sample_points = 3  # 采样点数量
     
-    # 大模型配置，优先使用 ZTE_V3_CONFIG，如果不存在则使用 DEEPSEEK_CONFIG
-    if hasattr(configs, 'ZTE_V3_CONFIG'):
-        llm_config = configs.ZTE_V3_CONFIG
-    else:
-        logger.warning("ZTE_V3_CONFIG 不存在，使用 DEEPSEEK_CONFIG")
-        llm_config = configs.DEEPSEEK_CONFIG
+    llm_config = configs.LLM_CONFIG
     
     input_file = ['https_access.log', 'ssh_access.log']  # 入口日志文件列表
     

@@ -1,5 +1,7 @@
 # coding=utf-8
-
+# @File : precondition
+# @Project : fault-analysis
+# @Description : 进行日志模板解析前的预处理:日志文件加载、日志前缀处理。
 import re
 
 import pandas as pd
@@ -277,7 +279,7 @@ def time_format_generate(logs: list):
     """
     为输入日志生成对应的时间格式
     """
-    llm = LLMClient(configs.DEEPSEEK_CONFIG)
+    llm = LLMClient(configs.LLM_CONFIG)
     if len(logs) > 5:
         log = logs[0:5]
     else:
@@ -311,7 +313,7 @@ if __name__ == '__main__':
         log_file='E:\\Self_code\\PycharmProjects\\fault-analysis\\resource\\fake_log\\linux\\syslog',
         prefix_format='(\w{3} \d{1,2}) (\d{2}:\d{2}:\d{2}).*\[(\d+)\]:',
         out_path='E:\\Self_code\\PycharmProjects\\fault-analysis\\resource\\fake_template\\linux\\syslog.csv',
-        llm_config=configs.DEEPSEEK_CONFIG,
+        llm_config=configs.LLM_CONFIG,
         prefix_parameters=['date', 'time', 'pid'],
         is_pasered=1,
         template_path='E:\\Self_code\\PycharmProjects\\fault-analysis\\resource\\fake_template\\linux\\syslog.csv'

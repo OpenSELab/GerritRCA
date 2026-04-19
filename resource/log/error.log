@@ -1,0 +1,2 @@
+2025/09/03 10:15:47 [error] 3124#3124: *67 user "roselee" was not found in "/opt/config/gerrit.password", client: 192.168.5.7, server: localhost, request: "GET /login/ HTTP/1.1"
+2025/09/03 10:18:22 [error] 3124#3124: *72 user "tom" password mismatch, client: 192.168.5.8, server: localhost, request: "POST /login/%2F HTTP/1.1"
